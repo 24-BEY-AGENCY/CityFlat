@@ -4,7 +4,9 @@ import "./Navbar.css";
 export default function Navbar() {
   return (
     <nav className="_nav">
-      <svg
+      <ul>
+        <li className="big-screens">
+          <a href="#"><svg
         width="40"
         height="112"
         viewBox="0 0 40 112"
@@ -31,9 +33,7 @@ export default function Navbar() {
           transform="matrix(1 0 0 -1 0 112)"
           fill="#028139"
         />
-      </svg>
-      <ul>
-        <li className="big-screens">
+      </svg></a>
           <a href="#">Properties</a>
           <a href="#">Follow us</a>
           <a href="#">Testimonial</a>

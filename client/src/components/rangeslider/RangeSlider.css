@@ -45,15 +45,34 @@
   line-height: 16px; /* 61.538% */
   letter-spacing: 2.86px;
   text-transform: uppercase;
-  margin-top: 20px;
+  margin-top: 13px;
 }
 
 .slider__left-value {
   left: 6px;
+  color: #1a1b1a;
+  font-family: "Helvetica Neue";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 61.538% */
+  letter-spacing: 2.86px;
+  text-transform: uppercase;
 }
 
 .slider__right-value {
   right: -4px;
+  color: #1a1b1a;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #000;
+  font-family: "Helvetica Neue";
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 61.538% */
+  letter-spacing: 2.86px;
+  text-transform: uppercase;
 }
 
 /* Removing the default appearance */

@@ -8,7 +8,7 @@
   font-size: 20px;
   padding: 0 20vw;
   background: rgba(27, 29, 28, 0.28);
-  z-index: 1;
+  z-index: 99;
 }
 
 ._nav span {
@@ -52,7 +52,7 @@
 ._nav .btn {
   padding: 0.5rem 1rem;
   margin: 0 0 0 0.5rem;
-  border: 1px solid #4caf50;
+  border: 1px solid #028139;
   border-radius: 59.848px;
   font-weight: 600;
   cursor: pointer;
