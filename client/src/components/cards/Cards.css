@@ -109,7 +109,7 @@
   text-transform: uppercase;
 }
 .card-price {
-  padding: 0 30px;
+  padding-left: 30px;
   color: #038b3e;
   font-family: "Helvetica Neue";
   font-size: 38.23px;
@@ -137,3 +137,24 @@
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
 } */
+@media (max-width: 480px) {
+   .card-title {
+    font-size: 21px;
+  }
+  .card-rating {
+    font-size: 21px;
+  }
+  .card-price {
+    font-size: 25px;
+    padding-left: 20px;
+  }
+  .card-price p span {
+    font-size: 15px;
+  }
+  .card-btn {
+    width: 40%;
+  }
+  .card-btn button {
+    font-size: 15px;
+  }
+}

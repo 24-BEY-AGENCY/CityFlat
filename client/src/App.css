@@ -28,7 +28,7 @@ a {
 /* img { height: auto; } */
 
 input,
-button {
+button,textarea {
   background: none ;
   border: none ;
   font: inherit ;
