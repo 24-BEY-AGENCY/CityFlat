@@ -15,10 +15,10 @@ const handleItemClick = (index) => {
       {/* <div className="nav_logo_ctr"></div> */}
       <ul>
         <li className="big-screens">
-          <a href="#" id="_nav_img">
+          {/* <a href="#" id="_nav_img">
             <img src={logo} />
             <img src={name} />
-          </a>
+          </a> */}
           <a href="#" onClick={() => handleItemClick(0)}>
             <svg
               width="40"

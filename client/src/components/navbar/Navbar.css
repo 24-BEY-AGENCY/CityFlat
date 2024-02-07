@@ -5,10 +5,13 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 20px;
-  padding: 0 13vw;
-  background: rgba(27, 29, 28, 0.28);
-  z-index: 9999999999;
+  padding: 0 25vw;
+  /* background: rgba(27, 29, 28, 0.28); */
+  background: #1b1d1c;
+  box-shadow: 5px 4px 25.7px 0px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 #_nav_img {
   width: 10%;
@@ -20,14 +23,14 @@
 ._nav span {
   color: #4caf50;
 }
-
 ._nav p {
   font-size: 25px;
   font-weight: 600;
   cursor: default;
 }
 ._nav ul {
-  width: 100%;
+  width: 1440px;
+  margin: 0 1%;
 }
 ._nav li {
   display: flex;
@@ -38,7 +41,6 @@
   flex: 1;
   color: #fff;
 }
-
 ._nav a {
   text-decoration: none;
   padding: 0 1rem;
@@ -50,13 +52,10 @@
   line-height: 16px; /* 160% */
   letter-spacing: 1.2px;
   text-transform: uppercase;
-      display: flex;
-    flex-direction: column;
-    align-items:center;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-
 ._nav .btn {
   padding: 0.5rem 1rem;
   margin: 0 0 0 0.5rem;
@@ -66,7 +65,6 @@
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
-
 .register {
   background: var(
     --Linear,
