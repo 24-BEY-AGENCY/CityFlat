@@ -1,0 +1,38 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# Built output
+dist/
+build/
+out/
+
+# Environment variables
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Configuration files
+config/*.json
+
+# Testing files
+test/
+
+# Debugging
+node_modules/.cache/
+node_modules
+node_modules
+node_modules
