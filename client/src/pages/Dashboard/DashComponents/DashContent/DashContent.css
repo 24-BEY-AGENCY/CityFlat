@@ -1,0 +1,49 @@
+.container-fluid h1 {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.card-long,
+.card {
+  background-color: #393939;
+  border-radius: 30px;
+}
+#card-long {
+  height: 250px;
+}
+#card-small {
+}
+.card-body {
+  height: 150px;
+}
+._date {
+  color: rgba(255, 255, 255, 0.22);
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+._number {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+._gold_text {
+  color: #f7d86a;
+  font-family: Montserrat, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}

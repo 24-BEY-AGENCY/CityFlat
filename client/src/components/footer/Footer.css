@@ -1,5 +1,5 @@
 ._footer {
-  height: 60%;
+  /* height: 60%; */
   width: 100%;
   background: #1a1b1a;
   display: flex;
@@ -97,8 +97,8 @@
 }
 @media (max-width: 480px) {
     ._footer {
-      height: 110%;
-        margin-top: 80%;
+      /* height: 110%; */
+        /* margin-top: 80%; */
         align-items: center;
         justify-content: flex-end;
         flex-direction: column;
@@ -121,12 +121,7 @@
     }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  ._footer {
-    height: 60%;
-    align-items: flex-end;
-  }
-  ._footer_items {
-    width: 100%;
-  }
+ 
+
  
 }

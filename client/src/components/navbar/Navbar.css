@@ -64,6 +64,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  color: white;
 }
 .register {
   background: var(
@@ -77,12 +78,13 @@
   font-weight: 700;
   line-height: 19.152px; /* 114.286% */
   text-transform: capitalize;
+  transition: 0.2s ease-in-out;
 }
 
 .register:hover {
-  border: 1px solid #028139;
-  color: #028139;
+  border: 1px solid #028139 !important;
   background: transparent;
+  transition: 0.2s ease-in-out;
 }
 
 .login {
@@ -93,6 +95,7 @@
   font-weight: 700;
   line-height: 19.152px; /* 114.286% */
   text-transform: capitalize;
+  transition: 0.2s ease-in-out;
 }
 
 .login:hover {
@@ -101,6 +104,7 @@
     linear-gradient(315deg, #07d25f 20.24%, #028139 80.97%)
   );
   color: #fff;
+  transition: 0.2s ease-in-out;
 }
 
 /* ._navIGATION BAR ENDS */
@@ -130,4 +134,16 @@
   }
 }
 
-/* MEDIA QUERIES ENDS*/
+/* MODAL CSS*/
+.login_signin_modal .modal-body,
+.login_signin_modal .modal-content {
+  padding: 0;
+  border-radius: 40px !important;
+}
+@media (min-width: 992px) {
+  .login_signin_modal .modal-lg,
+  .login_signin_modal .modal-xl {
+    --bs-modal-width: 800px;
+    width: 700px;
+  }
+}

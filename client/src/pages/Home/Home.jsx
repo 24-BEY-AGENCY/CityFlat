@@ -283,7 +283,7 @@ export default function Home() {
                         d="M0.338867 102.75H99.6635V103.85H0.338867V102.75Z"
                         fill="#D03B9D"
                       />
-                      <g clip-path="url(#clip0_0_1)">
+                      <g clipPath="url(#clip0_0_1)">
                         <path
                           d="M18.75 4.08249C14.035 8.97999 15 14.1825 15 29.9875C15 43.1125 12.71 56.27 24.695 59.3675C28.4375 60.33 61.5975 60.33 65.335 59.3625C70.325 58.075 74.385 54.0275 74.94 46.97C75.0175 45.985 75.0175 14.0075 74.9375 13.0025C74.3475 5.48499 69.72 1.15249 63.6225 0.274994C62.225 0.0724939 61.945 0.0124939 54.775 -6.07967e-06C29.3425 0.0124939 23.7675 -1.12001 18.75 4.08249Z"
                           fill="url(#paint0_linear_0_1)"
@@ -302,9 +302,9 @@ export default function Home() {
                           y2="7.90493"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stop-color="#FFDD55" />
-                          <stop offset="0.5" stop-color="#FF543E" />
-                          <stop offset="1" stop-color="#C837AB" />
+                          <stop stopColor="#FFDD55" />
+                          <stop offset="0.5" stopColor="#FF543E" />
+                          <stop offset="1" stopColor="#C837AB" />
                         </linearGradient>
                         <clipPath id="clip0_0_1">
                           <rect
@@ -354,7 +354,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="contact_ctr">
+            {/* <div className="contact_ctr">
               <div className="_contact_box">
                 <span>Contact Us</span>
                 <div className="contact_inputs">
@@ -370,7 +370,24 @@ export default function Home() {
                 </div>
                 <button>Send</button>
               </div>
+            </div> */}
+          </div>
+        </div>
+        <div className="_contact_ctr">
+          <div className="_contact_box">
+            <span>Contact Us</span>
+            <div className="contact_inputs">
+              <div className="contact_fields">
+                <input placeholder="first name.." />
+                <input placeholder="last name.." />
+                <input placeholder="phone.." />
+                <input placeholder="email.." />
+              </div>
+              <div className="message_field">
+                <textarea placeholder="message..."></textarea>
+              </div>
             </div>
+            <button>Send</button>
           </div>
         </div>
         <Footer />

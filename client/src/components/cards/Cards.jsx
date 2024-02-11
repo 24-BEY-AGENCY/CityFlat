@@ -59,7 +59,7 @@ export default function Cards() {
         <div className="card-price-btn">
           <div className="card-price">
             <p>
-              3000 € <span>/Month</span>
+              3000 € <span>/ Month</span>
             </p>
           </div>
           <div className="card-btn">
