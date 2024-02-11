@@ -4,6 +4,8 @@ import logo from "../../assets/homepage_mats/logo_h.png";
 import DashContent from "./DashComponents/DashContent/DashContent";
 import BookingsContent from "./DashComponents/BookingsContent/BookingsContent";
 import AppartementsContent from "./DashComponents/AppartementsContent/AppartementsContent";
+import CustomersContent from "./DashComponents/CustomersContent/CustomersContent";
+import InvoiceContent from "./DashComponents/InvoiceContent/InvoiceContent";
 
 function Dashboard() {
   const [isNavClosed, setIsNavClosed] = useState(window.innerWidth <= 991);
@@ -474,6 +476,8 @@ function Dashboard() {
           {activeIndex === 0 && <DashContent />}
           {activeIndex === 1 && <BookingsContent />}
           {activeIndex === 2 && <AppartementsContent />}
+          {activeIndex === 3 && <CustomersContent />}
+          {activeIndex === 5 && <InvoiceContent />}
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import React from "react";
-import "./BookingContent.css";
+import "./InvoiceContent.css";
 
-export default function BookingsContent() {
+export default function InvoiceContent() {
   return (
     <>
       <div className="container-fluid py-4">
-        <h1 className="h3 mb-0 text-start">Bookings (16)</h1>
+        <h1 className="h3 mb-0 text-start">Invoices (1)</h1>
       </div>
       <div className="row">
         <div className="col-lg-12 mb-4">
@@ -21,14 +21,15 @@ export default function BookingsContent() {
       </div>
       <section className="tables scrollable-container">
         <div className="table__wrapper scrollable-container">
-          <table className="booking_table">
+          <table className="invoice_table">
             <thead className="table__header">
               <tr>
-                <td>apartements</td>
+                <td>order</td>
+                <td>customer</td>
+                <td>price</td>
                 <td>check in</td>
                 <td>check out</td>
-                <td>total price</td>
-                <td>Status</td>
+                <td></td>
               </tr>
             </thead>
             <tbody className="table__body">
@@ -77,14 +78,14 @@ export default function BookingsContent() {
                       </clipPath>
                     </defs>
                   </svg>
-                  0045
+                  Invoice_n04
                 </td>
-                <td>Doggo Dogg</td>
-                <td>Shiba Inu</td>
-                <td>20 June 2019</td>
+                <td>Sidi Youssef</td>
+                <td>800 €</td>
+                              <td>20 June 2019</td>
+                              <td>18 June 2018</td>
                 <td className="d-flex gap-2">
                   <div class="close-btn"></div>
-                  <div class="checkmark-btn"></div>
                 </td>
               </tr>
             </tbody>

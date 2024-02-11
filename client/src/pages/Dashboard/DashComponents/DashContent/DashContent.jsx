@@ -8,7 +8,6 @@ export default function DashContent() {
         <div className="mb-4">
           <h1 className="h3 mb-0 text-start">Dashboard</h1>
         </div>
-
         <div className="row">
           <div className="col-xl-4 col-md-6 mb-4">
             <div
@@ -225,7 +224,6 @@ export default function DashContent() {
             </div>
           </div>
         </div>
-
         <div className="row">
           <div className="col-lg-12 mb-4">
             <div className="row">
