@@ -230,12 +230,18 @@ export default function DashContent() {
           <div className="col-lg-12 mb-4">
             <div className="row">
               <div className="col-lg-6 mb-4">
-                <div className="card bg-primary text-white shadow" id="card-long">
+                <div
+                  className="card bg-primary text-white shadow"
+                  id="card-long"
+                >
                   <div className="card-body">Primary</div>
                 </div>
               </div>
               <div className="col-lg-6 mb-4">
-                <div className="card bg-success text-white shadow" id="card-long">
+                <div
+                  className="card bg-success text-white shadow"
+                  id="card-long"
+                >
                   <div className="card-body">Success</div>
                 </div>
               </div>
