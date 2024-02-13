@@ -28,4 +28,5 @@
 }
 .invoice_table td {
   padding: 18px 15px;
+  cursor: pointer;
 }

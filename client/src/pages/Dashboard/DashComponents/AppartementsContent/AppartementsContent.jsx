@@ -8,10 +8,10 @@ export default function AppartementsContent() {
       <div className="container-fluid py-4">
         <h1 className="h3 mb-0 text-start">Appartements (4)</h1>
       </div>
-      <ul class="app_cards scrollable-container">
-        <li class="app_cards_item">
-          <div class="add_app_card">
-            <div class="add_app_card_content d-flex align-items-center justify-content-center flex-column">
+      <ul className="app_cards scrollable-container">
+        <li className="app_cards_item">
+          <div className="add_app_card">
+            <div className="add_app_card_content d-flex align-items-center justify-content-center flex-column">
               <svg
                 width="70"
                 height="70"
@@ -24,7 +24,7 @@ export default function AppartementsContent() {
                   height="70"
                   rx="20"
                   fill="white"
-                  fill-opacity="0.08"
+                  fillOpacity="0.08"
                 />
                 <rect
                   x="0.5"
@@ -33,9 +33,9 @@ export default function AppartementsContent() {
                   height="69"
                   rx="19.5"
                   stroke="white"
-                  stroke-opacity="0.16"
+                  strokeOpacity="0.16"
                 />
-                <g clip-path="url(#clip0_0_1)">
+                <g clipPath="url(#clip0_0_1)">
                   <path
                     d="M35.0198 36.4046L35.0198 48.7281H32.9802L32.9802 36.4046L20.6567 36.4046L20.6567 34.365L32.9802 34.365L32.9802 22.0414H35.0198L35.0198 34.365L47.3433 34.365L47.3433 36.4046L35.0198 36.4046Z"
                     fill="white"
@@ -55,14 +55,14 @@ export default function AppartementsContent() {
             </div>
           </div>
         </li>
-        <li class="app_cards_item">
-          <div class="app_card">
-            <div class="app_card_image">
+        <li className="app_cards_item">
+          <div className="app_card">
+            <div className="app_card_image">
               <img src={apartement} alt="app" />
             </div>
 
-            <div class="app_card_content">
-              <div class="app_card_heading d-flex justify-content-between">
+            <div className="app_card_content">
+              <div className="app_card_heading d-flex justify-content-between">
                 <span className="app_title">apartement B</span>
                 <span className="app_title">
                   <svg
@@ -89,7 +89,7 @@ export default function AppartementsContent() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_161_2953)">
+                  <g clipPath="url(#clip0_161_2953)">
                     <path
                       d="M4.50296 0.195417C6.27031 0.135857 7.72168 1.55078 7.72168 3.30467C7.72168 5.29514 5.81151 6.73968 4.74087 8.81713C4.68651 8.92261 4.53467 8.92274 4.48012 8.81728C3.51157 6.948 1.85618 5.69454 1.5494 3.8937C1.23176 2.03018 2.61367 0.259112 4.50296 0.195417ZM4.61065 4.93425C5.51063 4.93425 6.24023 4.20463 6.24023 3.30467C6.24023 2.40471 5.51061 1.67509 4.61065 1.67509C3.71067 1.67509 2.98105 2.40471 2.98105 3.30467C2.98105 4.20463 3.71067 4.93425 4.61065 4.93425Z"
                       fill="#DEC25F"
@@ -108,7 +108,7 @@ export default function AppartementsContent() {
                 </svg>
                 Lorem ipsum dolor sit amet
               </p>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <div className="d-flex align-items-center gap-2">
                   <svg
                     width="38"
@@ -123,7 +123,7 @@ export default function AppartementsContent() {
                       height="37.7821"
                       rx="13.4936"
                       fill="#0DB254"
-                      fill-opacity="0.05"
+                      fillOpacity="0.05"
                     />
                     <path
                       d="M30.1049 20.1561C30.2535 19.8913 30.332 19.5907 30.3326 19.2846V18.9534C30.3327 18.7245 30.2893 18.4977 30.2046 18.2862C30.12 18.0746 29.9958 17.8823 29.8392 17.7203L29.0675 16.9273V16.6702H31.2307L30.7036 12.3129H26.5881L26.061 16.6702H28.2242V16.9273L27.4525 17.7203C27.2959 17.8823 27.1718 18.0746 27.0871 18.2862C27.0025 18.4977 26.959 18.7245 26.9592 18.9534V19.2846C26.9597 19.5907 27.0382 19.8913 27.1869 20.1561H25.2725V27.5635H32.0193V20.1561H30.1049ZM29.4892 22.3347H27.8025V21.4633H29.4892V22.3347ZM29.4892 25.3848H27.8025V24.5134H29.4892V25.3848Z"
@@ -155,9 +155,9 @@ export default function AppartementsContent() {
                         height="37.7821"
                         rx="13.4936"
                         fill="#0DB254"
-                        fill-opacity="0.05"
+                        fillOpacity="0.05"
                       />
-                      <g clip-path="url(#clip0_0_1)">
+                      <g clipPath="url(#clip0_0_1)">
                         <path
                           d="M22.4049 14.8603C22.27 14.8603 22.1351 14.8088 22.0322 14.7059L21.7511 14.4248C21.5453 14.2189 21.5453 13.8852 21.7511 13.6793C21.9569 13.4735 22.2907 13.4735 22.4965 13.6793L22.7777 13.9605C23.1107 14.2935 22.8702 14.8603 22.4049 14.8603Z"
                           fill="#0DB254"
@@ -197,26 +197,26 @@ export default function AppartementsContent() {
                   </div>
                 </div>
               </div>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <p className="d-flex align-items-center gap-1">
                   3000 € <span>/ month</span>
                 </p>
                 <div className="d-flex gap-2">
-                  <div class="edit-btn"></div>
-                  <div class="close-btn"></div>
+                  <div className="edit-btn"></div>
+                  <div className="close-btn"></div>
                 </div>
               </div>
             </div>
           </div>
         </li>
-        <li class="app_cards_item">
-          <div class="app_card">
-            <div class="app_card_image">
+        <li className="app_cards_item">
+          <div className="app_card">
+            <div className="app_card_image">
               <img src={apartement} alt="app" />
             </div>
 
-            <div class="app_card_content">
-              <div class="app_card_heading d-flex justify-content-between">
+            <div className="app_card_content">
+              <div className="app_card_heading d-flex justify-content-between">
                 <span className="app_title">apartement B</span>
                 <span className="app_title">
                   <svg
@@ -243,7 +243,7 @@ export default function AppartementsContent() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_161_2953)">
+                  <g clipPath="url(#clip0_161_2953)">
                     <path
                       d="M4.50296 0.195417C6.27031 0.135857 7.72168 1.55078 7.72168 3.30467C7.72168 5.29514 5.81151 6.73968 4.74087 8.81713C4.68651 8.92261 4.53467 8.92274 4.48012 8.81728C3.51157 6.948 1.85618 5.69454 1.5494 3.8937C1.23176 2.03018 2.61367 0.259112 4.50296 0.195417ZM4.61065 4.93425C5.51063 4.93425 6.24023 4.20463 6.24023 3.30467C6.24023 2.40471 5.51061 1.67509 4.61065 1.67509C3.71067 1.67509 2.98105 2.40471 2.98105 3.30467C2.98105 4.20463 3.71067 4.93425 4.61065 4.93425Z"
                       fill="#DEC25F"
@@ -262,7 +262,7 @@ export default function AppartementsContent() {
                 </svg>
                 Lorem ipsum dolor sit amet
               </p>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <div className="d-flex align-items-center gap-2">
                   <svg
                     width="38"
@@ -277,7 +277,7 @@ export default function AppartementsContent() {
                       height="37.7821"
                       rx="13.4936"
                       fill="#0DB254"
-                      fill-opacity="0.05"
+                      fillOpacity="0.05"
                     />
                     <path
                       d="M30.1049 20.1561C30.2535 19.8913 30.332 19.5907 30.3326 19.2846V18.9534C30.3327 18.7245 30.2893 18.4977 30.2046 18.2862C30.12 18.0746 29.9958 17.8823 29.8392 17.7203L29.0675 16.9273V16.6702H31.2307L30.7036 12.3129H26.5881L26.061 16.6702H28.2242V16.9273L27.4525 17.7203C27.2959 17.8823 27.1718 18.0746 27.0871 18.2862C27.0025 18.4977 26.959 18.7245 26.9592 18.9534V19.2846C26.9597 19.5907 27.0382 19.8913 27.1869 20.1561H25.2725V27.5635H32.0193V20.1561H30.1049ZM29.4892 22.3347H27.8025V21.4633H29.4892V22.3347ZM29.4892 25.3848H27.8025V24.5134H29.4892V25.3848Z"
@@ -309,9 +309,9 @@ export default function AppartementsContent() {
                         height="37.7821"
                         rx="13.4936"
                         fill="#0DB254"
-                        fill-opacity="0.05"
+                        fillOpacity="0.05"
                       />
-                      <g clip-path="url(#clip0_0_1)">
+                      <g clipPath="url(#clip0_0_1)">
                         <path
                           d="M22.4049 14.8603C22.27 14.8603 22.1351 14.8088 22.0322 14.7059L21.7511 14.4248C21.5453 14.2189 21.5453 13.8852 21.7511 13.6793C21.9569 13.4735 22.2907 13.4735 22.4965 13.6793L22.7777 13.9605C23.1107 14.2935 22.8702 14.8603 22.4049 14.8603Z"
                           fill="#0DB254"
@@ -351,26 +351,26 @@ export default function AppartementsContent() {
                   </div>
                 </div>
               </div>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <p className="d-flex align-items-center gap-1">
                   3000 € <span>/ month</span>
                 </p>
                 <div className="d-flex gap-2">
-                  <div class="edit-btn"></div>
-                  <div class="close-btn"></div>
+                  <div className="edit-btn"></div>
+                  <div className="close-btn"></div>
                 </div>
               </div>
             </div>
           </div>
         </li>
-        <li class="app_cards_item">
-          <div class="app_card">
-            <div class="app_card_image">
+        <li className="app_cards_item">
+          <div className="app_card">
+            <div className="app_card_image">
               <img src={apartement} alt="app" />
             </div>
 
-            <div class="app_card_content">
-              <div class="app_card_heading d-flex justify-content-between">
+            <div className="app_card_content">
+              <div className="app_card_heading d-flex justify-content-between">
                 <span className="app_title">apartement B</span>
                 <span className="app_title">
                   <svg
@@ -397,7 +397,7 @@ export default function AppartementsContent() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_161_2953)">
+                  <g clipPath="url(#clip0_161_2953)">
                     <path
                       d="M4.50296 0.195417C6.27031 0.135857 7.72168 1.55078 7.72168 3.30467C7.72168 5.29514 5.81151 6.73968 4.74087 8.81713C4.68651 8.92261 4.53467 8.92274 4.48012 8.81728C3.51157 6.948 1.85618 5.69454 1.5494 3.8937C1.23176 2.03018 2.61367 0.259112 4.50296 0.195417ZM4.61065 4.93425C5.51063 4.93425 6.24023 4.20463 6.24023 3.30467C6.24023 2.40471 5.51061 1.67509 4.61065 1.67509C3.71067 1.67509 2.98105 2.40471 2.98105 3.30467C2.98105 4.20463 3.71067 4.93425 4.61065 4.93425Z"
                       fill="#DEC25F"
@@ -416,7 +416,7 @@ export default function AppartementsContent() {
                 </svg>
                 Lorem ipsum dolor sit amet
               </p>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <div className="d-flex align-items-center gap-2">
                   <svg
                     width="38"
@@ -431,7 +431,7 @@ export default function AppartementsContent() {
                       height="37.7821"
                       rx="13.4936"
                       fill="#0DB254"
-                      fill-opacity="0.05"
+                      fillOpacity="0.05"
                     />
                     <path
                       d="M30.1049 20.1561C30.2535 19.8913 30.332 19.5907 30.3326 19.2846V18.9534C30.3327 18.7245 30.2893 18.4977 30.2046 18.2862C30.12 18.0746 29.9958 17.8823 29.8392 17.7203L29.0675 16.9273V16.6702H31.2307L30.7036 12.3129H26.5881L26.061 16.6702H28.2242V16.9273L27.4525 17.7203C27.2959 17.8823 27.1718 18.0746 27.0871 18.2862C27.0025 18.4977 26.959 18.7245 26.9592 18.9534V19.2846C26.9597 19.5907 27.0382 19.8913 27.1869 20.1561H25.2725V27.5635H32.0193V20.1561H30.1049ZM29.4892 22.3347H27.8025V21.4633H29.4892V22.3347ZM29.4892 25.3848H27.8025V24.5134H29.4892V25.3848Z"
@@ -463,9 +463,9 @@ export default function AppartementsContent() {
                         height="37.7821"
                         rx="13.4936"
                         fill="#0DB254"
-                        fill-opacity="0.05"
+                        fillOpacity="0.05"
                       />
-                      <g clip-path="url(#clip0_0_1)">
+                      <g clipPath="url(#clip0_0_1)">
                         <path
                           d="M22.4049 14.8603C22.27 14.8603 22.1351 14.8088 22.0322 14.7059L21.7511 14.4248C21.5453 14.2189 21.5453 13.8852 21.7511 13.6793C21.9569 13.4735 22.2907 13.4735 22.4965 13.6793L22.7777 13.9605C23.1107 14.2935 22.8702 14.8603 22.4049 14.8603Z"
                           fill="#0DB254"
@@ -505,26 +505,26 @@ export default function AppartementsContent() {
                   </div>
                 </div>
               </div>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <p className="d-flex align-items-center gap-1">
                   3000 € <span>/ month</span>
                 </p>
                 <div className="d-flex gap-2">
-                  <div class="edit-btn"></div>
-                  <div class="close-btn"></div>
+                  <div className="edit-btn"></div>
+                  <div className="close-btn"></div>
                 </div>
               </div>
             </div>
           </div>
         </li>
-        <li class="app_cards_item">
-          <div class="app_card">
-            <div class="app_card_image">
+        <li className="app_cards_item">
+          <div className="app_card">
+            <div className="app_card_image">
               <img src={apartement} alt="app" />
             </div>
 
-            <div class="app_card_content">
-              <div class="app_card_heading d-flex justify-content-between">
+            <div className="app_card_content">
+              <div className="app_card_heading d-flex justify-content-between">
                 <span className="app_title">apartement B</span>
                 <span className="app_title">
                   <svg
@@ -551,7 +551,7 @@ export default function AppartementsContent() {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_161_2953)">
+                  <g clipPath="url(#clip0_161_2953)">
                     <path
                       d="M4.50296 0.195417C6.27031 0.135857 7.72168 1.55078 7.72168 3.30467C7.72168 5.29514 5.81151 6.73968 4.74087 8.81713C4.68651 8.92261 4.53467 8.92274 4.48012 8.81728C3.51157 6.948 1.85618 5.69454 1.5494 3.8937C1.23176 2.03018 2.61367 0.259112 4.50296 0.195417ZM4.61065 4.93425C5.51063 4.93425 6.24023 4.20463 6.24023 3.30467C6.24023 2.40471 5.51061 1.67509 4.61065 1.67509C3.71067 1.67509 2.98105 2.40471 2.98105 3.30467C2.98105 4.20463 3.71067 4.93425 4.61065 4.93425Z"
                       fill="#DEC25F"
@@ -570,7 +570,7 @@ export default function AppartementsContent() {
                 </svg>
                 Lorem ipsum dolor sit amet
               </p>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <div className="d-flex align-items-center gap-2">
                   <svg
                     width="38"
@@ -585,7 +585,7 @@ export default function AppartementsContent() {
                       height="37.7821"
                       rx="13.4936"
                       fill="#0DB254"
-                      fill-opacity="0.05"
+                      fillOpacity="0.05"
                     />
                     <path
                       d="M30.1049 20.1561C30.2535 19.8913 30.332 19.5907 30.3326 19.2846V18.9534C30.3327 18.7245 30.2893 18.4977 30.2046 18.2862C30.12 18.0746 29.9958 17.8823 29.8392 17.7203L29.0675 16.9273V16.6702H31.2307L30.7036 12.3129H26.5881L26.061 16.6702H28.2242V16.9273L27.4525 17.7203C27.2959 17.8823 27.1718 18.0746 27.0871 18.2862C27.0025 18.4977 26.959 18.7245 26.9592 18.9534V19.2846C26.9597 19.5907 27.0382 19.8913 27.1869 20.1561H25.2725V27.5635H32.0193V20.1561H30.1049ZM29.4892 22.3347H27.8025V21.4633H29.4892V22.3347ZM29.4892 25.3848H27.8025V24.5134H29.4892V25.3848Z"
@@ -617,9 +617,9 @@ export default function AppartementsContent() {
                         height="37.7821"
                         rx="13.4936"
                         fill="#0DB254"
-                        fill-opacity="0.05"
+                        fillOpacity="0.05"
                       />
-                      <g clip-path="url(#clip0_0_1)">
+                      <g clipPath="url(#clip0_0_1)">
                         <path
                           d="M22.4049 14.8603C22.27 14.8603 22.1351 14.8088 22.0322 14.7059L21.7511 14.4248C21.5453 14.2189 21.5453 13.8852 21.7511 13.6793C21.9569 13.4735 22.2907 13.4735 22.4965 13.6793L22.7777 13.9605C23.1107 14.2935 22.8702 14.8603 22.4049 14.8603Z"
                           fill="#0DB254"
@@ -659,13 +659,13 @@ export default function AppartementsContent() {
                   </div>
                 </div>
               </div>
-              <div class="app_card_heading d-flex justify-content-between">
+              <div className="app_card_heading d-flex justify-content-between">
                 <p className="d-flex align-items-center gap-1">
                   3000 € <span>/ month</span>
                 </p>
                 <div className="d-flex gap-2">
-                  <div class="edit-btn"></div>
-                  <div class="close-btn"></div>
+                  <div className="edit-btn"></div>
+                  <div className="close-btn"></div>
                 </div>
               </div>
             </div>
