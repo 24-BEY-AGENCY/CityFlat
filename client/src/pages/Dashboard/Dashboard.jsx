@@ -477,6 +477,7 @@ function Dashboard() {
           {activeIndex === 1 && <BookingsContent />}
           {activeIndex === 2 && <AppartementsContent />}
           {activeIndex === 3 && <CustomersContent />}
+          {activeIndex === 4 && <></>}
           {activeIndex === 5 && <InvoiceContent />}
         </div>
       </div>
