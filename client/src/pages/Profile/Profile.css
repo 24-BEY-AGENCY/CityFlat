@@ -83,7 +83,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 500px;
+  max-height: 450px;
   overflow: auto;
 }
 .profile_cards_item {
@@ -117,7 +117,7 @@
   font-size: 12.611px;
   font-style: normal;
   font-weight: 700;
-  line-height: 6.005px; /* 47.619% */
+  line-height: 6.005px; 
   letter-spacing: 1.513px;
   text-transform: uppercase;
 }
@@ -152,7 +152,6 @@
 @media screen and (min-width: 60em) {
   .profile_cards_item {
     width: 33.3333%;
-    /* width: 30%; */
   }
   .no-flexbox .profile_cards_item:nth-child(3n + 1) {
     clear: both;
@@ -170,3 +169,4 @@
     display: none;
   }
 }
+

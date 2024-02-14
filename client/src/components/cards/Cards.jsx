@@ -4,7 +4,7 @@ import house from "../../assets/homepage_mats/vue-du-modele-maison-3d.png";
 
 export default function Cards() {
   return (
-      <a className="material-card" href="/some-article">
+      <div className="material-card" href="/some-article">
         <img className="card-picture" src={house} />
         <div className="card-info">
           <div className="cart-title-rating">
@@ -66,6 +66,6 @@ export default function Cards() {
             <button>More +</button>
           </div>
         </div>
-      </a>
+      </div>
   );
 }

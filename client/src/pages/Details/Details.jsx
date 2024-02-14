@@ -6,8 +6,11 @@ import "glightbox/dist/css/glightbox.css";
 import Footer from "../../components/footer/Footer";
 import CalendarComp from "../../components/calendar/CalendarComp";
 import logo from "../../assets/homepage_mats/city-flat.png"
+import { useParams } from 'react-router-dom';
+
 
 export default function Details() {
+  const { id } = useParams(); // Get the id parameter from the URL
   useEffect(() => {
     const lightbox = GLightbox({
       touchNavigation: true,
