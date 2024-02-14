@@ -42,14 +42,14 @@ export default function LoginRegister() {
               x2="307"
               y2="7.5"
               stroke="black"
-              stroke-opacity="0.3"
+              strokeOpacity="0.3"
             />
             <line
               y1="7.5"
               x2="137"
               y2="7.5"
               stroke="black"
-              stroke-opacity="0.3"
+              strokeOpacity="0.3"
             />
           </svg>
 
@@ -62,7 +62,7 @@ export default function LoginRegister() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_131_1411)">
+                <g clipPath="url(#clip0_131_1411)">
                   <path
                     d="M25 12.5C25 18.7393 20.4287 23.9106 14.4531 24.8481V16.1133H17.3657L17.9199 12.5H14.4531V10.1553C14.4531 9.1665 14.9375 8.20312 16.4902 8.20312H18.0664V5.12695C18.0664 5.12695 16.6357 4.88281 15.2681 4.88281C12.4131 4.88281 10.5469 6.61328 10.5469 9.74609V12.5H7.37305V16.1133H10.5469V24.8481C4.57129 23.9106 0 18.7393 0 12.5C0 5.59668 5.59668 0 12.5 0C19.4033 0 25 5.59668 25 12.5Z"
                     fill="#1877F2"
@@ -121,7 +121,7 @@ export default function LoginRegister() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_131_1403)">
+                <g clipPath="url(#clip0_131_1403)">
                   <path
                     d="M15.7692 0C15.8222 0 15.8752 0 15.9312 0C16.0612 1.606 15.4482 2.806 14.7032 3.675C13.9722 4.538 12.9712 5.375 11.3522 5.248C11.2442 3.665 11.8582 2.554 12.6022 1.687C13.2922 0.879 14.5572 0.16 15.7692 0Z"
                     fill="white"
@@ -171,14 +171,14 @@ export default function LoginRegister() {
               x2="307"
               y2="7.5"
               stroke="black"
-              stroke-opacity="0.3"
+              strokeOpacity="0.3"
             />
             <line
               y1="7.5"
               x2="137"
               y2="7.5"
               stroke="black"
-              stroke-opacity="0.3"
+              strokeOpacity="0.3"
             />
           </svg>
 
@@ -191,7 +191,7 @@ export default function LoginRegister() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_131_1411)">
+                <g clipPath="url(#clip0_131_1411)">
                   <path
                     d="M25 12.5C25 18.7393 20.4287 23.9106 14.4531 24.8481V16.1133H17.3657L17.9199 12.5H14.4531V10.1553C14.4531 9.1665 14.9375 8.20312 16.4902 8.20312H18.0664V5.12695C18.0664 5.12695 16.6357 4.88281 15.2681 4.88281C12.4131 4.88281 10.5469 6.61328 10.5469 9.74609V12.5H7.37305V16.1133H10.5469V24.8481C4.57129 23.9106 0 18.7393 0 12.5C0 5.59668 5.59668 0 12.5 0C19.4033 0 25 5.59668 25 12.5Z"
                     fill="#1877F2"
@@ -250,7 +250,7 @@ export default function LoginRegister() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_131_1403)">
+                <g clipPath="url(#clip0_131_1403)">
                   <path
                     d="M15.7692 0C15.8222 0 15.8752 0 15.9312 0C16.0612 1.606 15.4482 2.806 14.7032 3.675C13.9722 4.538 12.9712 5.375 11.3522 5.248C11.2442 3.665 11.8582 2.554 12.6022 1.687C13.2922 0.879 14.5572 0.16 15.7692 0Z"
                     fill="white"

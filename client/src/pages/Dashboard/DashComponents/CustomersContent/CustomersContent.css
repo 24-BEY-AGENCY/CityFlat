@@ -74,7 +74,7 @@
 }
 
 .slider-inner:before {
-  background: linear-gradient(315deg, #07D25F 20.24%, #028139 80.97%);
+  background: linear-gradient(315deg, #07d25f 20.24%, #028139 80.97%);
   color: #fff;
   content: "ACTIVE";
   padding-left: 0.75em;
@@ -96,7 +96,7 @@
 }
 
 .slider-circle {
-  background: linear-gradient(315deg, #07D25F 20.24%, #028139 80.97%);
+  background: linear-gradient(315deg, #07d25f 20.24%, #028139 80.97%);
   border-radius: 50%;
   bottom: 0;
   display: block;
@@ -115,7 +115,49 @@
 .slider-checkbox:checked + .slider-label .slider-circle {
   background: rgba(27, 29, 35, 0.8);
 
-box-shadow: -5px -3px 9.4px 0px #262930 inset;
+  box-shadow: -5px -3px 9.4px 0px #262930 inset;
 
   right: 0;
+}
+
+/* Modal content */
+.delete-form h3 {
+  color: #292a2d;
+  text-align: center;
+  font-family: "TT Commons", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28.126px; /* 70.315% */
+  text-transform: capitalize;
+}
+
+.customer-form-btn button {
+  border-radius: 60px;
+  border: 1px solid #0db254;
+  background: #dedede;
+  box-shadow: -5px -3px 9.4px 0px #fff inset;
+  padding: 20px;
+  color: #0db254;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.customer-form-btn #special-btn {
+  border-radius: 60px;
+  border: none;
+  background: var(
+    --Linear,
+    linear-gradient(315deg, #07d25f 20.24%, #028139 80.97%)
+  );
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
 }

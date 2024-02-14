@@ -242,3 +242,6 @@
   margin-top: 1rem;
   text-align: center;
 }
+.modal-content {
+  border: none !important;
+}

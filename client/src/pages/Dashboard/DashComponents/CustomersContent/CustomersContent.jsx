@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CustomersContent.css";
+import Modal from "../../../../components/modals/Modal";
+import { useModal } from "../../../../hooks/useModal";
 
 export default function CustomersContent() {
+  const { showModal, openModal, closeModal } = useModal();
   return (
     <>
       <div className="container-fluid py-4">
@@ -46,7 +49,7 @@ export default function CustomersContent() {
                       height="48"
                       rx="12.1951"
                       fill="white"
-                      fill-opacity="0.08"
+                      fillOpacity="0.08"
                     />
                     <path
                       d="M24 9C20.93 9 18.4184 11.5379 18.4184 14.6375C18.4184 17.7371 20.9311 20.275 24 20.275C27.0689 20.275 29.5816 17.7359 29.5816 14.6375C29.5827 11.5379 27.0689 9 24 9ZM11 33.8538C10.9977 34.4885 11.5064 35.0023 12.1349 35H35.8651C36.4936 35.0023 37.0023 34.4874 37 33.8538C37 27.6032 32.664 22.3573 26.853 21.0433C26.4268 20.9428 25.9815 21.1004 25.7091 21.4474L24.1153 23.5036L22.5306 21.4132C22.3237 21.1346 22.0004 20.9679 21.5347 20.9714C15.4727 22.1986 11 27.5096 11 33.8538Z"
@@ -58,19 +61,69 @@ export default function CustomersContent() {
                 <td>city-flat-customer@24bey.tn</td>
                 <td>999-999-999-99-99</td>
                 <td className="d-flex align-items-center gap-2">
-                  <div class="close-btn"></div>
-                  <div class="customer_slider">
+                  <div className="customer_slider">
                     <input
                       type="checkbox"
                       name="slider"
-                      class="slider-checkbox"
+                      className="slider-checkbox"
                       id="sliderSwitch"
                     />
-                    <label class="slider-label" for="sliderSwitch">
-                      <span class="slider-inner"></span>
-                      <span class="slider-circle"></span>
+                    <label className="slider-label" for="sliderSwitch">
+                      <span className="slider-inner"></span>
+                      <span className="slider-circle"></span>
                     </label>
                   </div>
+                  <div
+                    className="close-btn"
+                    onClick={() => {
+                      openModal();
+                    }}
+                  ></div>
+
+                  <Modal show={showModal} onHide={closeModal} size={"md"}>
+                    <div className="delete-form d-flex justify-content-center align-items-center flex-column">
+                      <svg
+                        width="50"
+                        height="74"
+                        viewBox="0 0 74 74"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="37"
+                          cy="37"
+                          r="37"
+                          fill="#940000"
+                        />
+                        <path
+                          d="M38.6633 37.5L51.7344 50.5711L49.5711 52.7344L36.5 39.6633L23.4289 52.7344L21.2656 50.5711L34.3367 37.5L21.2656 24.4289L23.4289 22.2656L36.5 35.3367L49.5711 22.2656L51.7344 24.4289L38.6633 37.5Z"
+                          fill="white"
+                        />
+                        <defs>
+                          <linearGradient
+                            id="paint0_linear_0_1"
+                            x1="28.6939"
+                            y1="9.06122"
+                            x2="54.3673"
+                            y2="74"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stop-color="#940000" />
+                            <stop offset="1" stop-color="#FF0101" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      <br />
+                      <h3>Are you sure</h3>
+                      <br/>
+                      <div className="customer-form-btn row d-flex justify-content-center gap-2">
+                        <button className="col">No</button>
+                        <button className="col" id="special-btn">
+                          yes
+                        </button>
+                      </div>
+                    </div>
+                  </Modal>
                 </td>
               </tr>
             </tbody>
