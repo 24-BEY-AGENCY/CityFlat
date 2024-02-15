@@ -89,12 +89,7 @@ export default function CustomersContent() {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <circle
-                          cx="37"
-                          cy="37"
-                          r="37"
-                          fill="#940000"
-                        />
+                        <circle cx="37" cy="37" r="37" fill="#940000" />
                         <path
                           d="M38.6633 37.5L51.7344 50.5711L49.5711 52.7344L36.5 39.6633L23.4289 52.7344L21.2656 50.5711L34.3367 37.5L21.2656 24.4289L23.4289 22.2656L36.5 35.3367L49.5711 22.2656L51.7344 24.4289L38.6633 37.5Z"
                           fill="white"
@@ -115,9 +110,11 @@ export default function CustomersContent() {
                       </svg>
                       <br />
                       <h3>Are you sure</h3>
-                      <br/>
+                      <br />
                       <div className="customer-form-btn row d-flex justify-content-center gap-2">
-                        <button className="col">No</button>
+                        <button className="col" onClick={() => closeModal()}>
+                          No
+                        </button>
                         <button className="col" id="special-btn">
                           yes
                         </button>

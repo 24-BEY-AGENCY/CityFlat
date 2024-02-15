@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Profile from "./pages/Profile/Profile";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import { useEffect } from "react";
 
 function App() {
   const Layout = ({ children }) => {

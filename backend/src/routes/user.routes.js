@@ -81,6 +81,7 @@ const userRouter = express.Router();
 
 userRouter.route("/register").post(multer("img", 512 * 1024), httpRegisterUser);
 userRouter.route("/login").post(validateLogin, httpLoginUser);
+
 userRouter
   .route("/:param")
   .get(httpGetOneUser)
