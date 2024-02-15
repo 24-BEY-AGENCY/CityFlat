@@ -27,7 +27,7 @@ export default function Navbar() {
             <img src={logo} />
             <img src={name} />
           </a> */}
-            <a href="#" onClick={() => handleItemClick(0)}>
+            <a href="/" onClick={() => handleItemClick(0)}>
               <svg
                 width="40"
                 height="44"

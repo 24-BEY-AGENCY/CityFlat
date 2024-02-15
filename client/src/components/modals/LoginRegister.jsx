@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import "./LoginRegister.css";
+import Loader from "../Loader/Loader";
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../redux/authSlice';
+
 
 export default function LoginRegister() {
+  const {user, isLoading, isAuthenticated} = useSelector((state) => state.user)
+  const dispatch = useDispatch();
+
+
+
   const handleSignUpClick = () => {
     const container = document.getElementById("container");
     container.classList.add("right-panel-active");
@@ -145,7 +154,6 @@ export default function LoginRegister() {
         <form action="#">
           <h1>Sign In</h1>
 
-          {/* <span>or use your email account</span> */}
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
           <a href="#">Forgot your password?</a>

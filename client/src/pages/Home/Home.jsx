@@ -8,11 +8,17 @@ import RangeSlider from "../../components/sliders/RangeSlider";
 import Cards from "../../components/cards/Cards";
 import TestimonialsSlider from "../../components/sliders/TestimonialsSlider";
 import Footer from "../../components/footer/Footer";
+import { Link } from "react-router-dom";
 
 export default function Home() {
+  const cardDetails = [
+    { id: 1, title: "Card 1", description: "Description for Card 1" },
+    { id: 2, title: "Card 2", description: "Description for Card 2" },
+    // Add more card details as needed
+  ];
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <div className="home_container"> */}
       <div className="_home">
         <div className="wrapper">
@@ -139,12 +145,11 @@ export default function Home() {
         <div className="_cards_container">
           <div className="cards_layer"></div>
           <div className="card_ctr">
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
+            {cardDetails.map((card) => (
+              <Link key={card.id} to={`/details/${card.id}`}>
+                <Cards />
+              </Link>
+            ))}
           </div>
         </div>
         <section className="_search_container">
