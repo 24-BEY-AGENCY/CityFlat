@@ -295,7 +295,7 @@ function Dashboard() {
       </div>
       <div className="main">
         <div className="sidebar">
-          <ul>
+          <ul onClick={handleMenuButtonClick}>
             <li onClick={() => handleClick(0)}>
               <a href="#" className={activeIndex === 0 ? "active" : ""}>
                 <svg
@@ -337,6 +337,7 @@ function Dashboard() {
                     </clipPath>
                   </defs>
                 </svg>
+
                 <span>Dashboard</span>
               </a>
             </li>
@@ -369,7 +370,6 @@ function Dashboard() {
                     </clipPath>
                   </defs>
                 </svg>
-
                 <span>Bookings</span>
               </a>
             </li>

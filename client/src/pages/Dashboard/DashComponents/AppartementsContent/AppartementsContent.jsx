@@ -11,7 +11,8 @@ export default function AppartementsContent() {
       <ul className="app_cards scrollable-container">
         <li className="app_cards_item">
           <div className="add_app_card">
-            <div className="add_app_card_content d-flex align-items-center justify-content-center flex-column">
+            <div className="add_app_card_content d-flex align-items-center justify-content-center flex-column gap-2">
+              <span>add a new appartement</span>
               <svg
                 width="70"
                 height="70"
@@ -24,7 +25,7 @@ export default function AppartementsContent() {
                   height="70"
                   rx="20"
                   fill="white"
-                  fillOpacity="0.08"
+                  fill-opacity="0.08"
                 />
                 <rect
                   x="0.5"
@@ -33,24 +34,12 @@ export default function AppartementsContent() {
                   height="69"
                   rx="19.5"
                   stroke="white"
-                  strokeOpacity="0.16"
+                  stroke-opacity="0.16"
                 />
-                <g clipPath="url(#clip0_0_1)">
-                  <path
-                    d="M35.0198 36.4046L35.0198 48.7281H32.9802L32.9802 36.4046L20.6567 36.4046L20.6567 34.365L32.9802 34.365L32.9802 22.0414H35.0198L35.0198 34.365L47.3433 34.365L47.3433 36.4046L35.0198 36.4046Z"
-                    fill="white"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_0_1">
-                    <rect
-                      width="26"
-                      height="26"
-                      fill="white"
-                      transform="translate(34 17) rotate(45)"
-                    />
-                  </clipPath>
-                </defs>
+                <path
+                  d="M35.0198 36.4046L35.0198 48.7281H32.9802L32.9802 36.4046L20.6567 36.4046L20.6567 34.365L32.9802 34.365L32.9802 22.0414H35.0198L35.0198 34.365L47.3433 34.365L47.3433 36.4046L35.0198 36.4046Z"
+                  fill="white"
+                />
               </svg>
             </div>
           </div>

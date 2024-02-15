@@ -24,66 +24,59 @@ export default function DashContent() {
                     <div className="_gold_text ">$84,326</div>
                   </div>
                   <div className="col-4 mr-2">
-                    <div className="text-xs font-weight-bold text-muted text-uppercase mb-1">
+                    <div className="svg_ctr text-xs font-weight-bold text-muted text-uppercase mb-1">
                       <svg
-                        width="82"
-                        height="82"
-                        viewBox="0 0 82 82"
+                        width="53"
+                        height="51"
+                        viewBox="0 0 53 51"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <rect
-                          width="82"
-                          height="82"
-                          rx="25"
-                          fill="white"
-                          fillOpacity="0.08"
+                        <path
+                          d="M42.1012 0.604492H10.899C4.88925 0.604492 0 5.49374 0 11.5034C0 17.5422 4.94008 22.4024 10.8339 22.4024H15.7292V13.863C15.7292 10.0387 18.8404 6.92743 22.6645 6.92743H22.6797C26.4958 6.93561 29.6003 10.0469 29.6003 13.863V22.4024H42.1012C48.1109 22.4024 53 17.5131 53 11.5034C53 5.49374 48.1109 0.604492 42.1012 0.604492ZM45.1853 9.98363L38.9744 16.1946C38.3681 16.801 37.3849 16.8011 36.7785 16.1946L33.673 13.0891C33.0666 12.4827 33.0666 11.4996 33.673 10.8932C34.2793 10.2868 35.2625 10.2868 35.8689 10.8932L37.8765 12.9007L42.9895 7.78775C43.5958 7.18136 44.579 7.18136 45.1854 7.78775C45.7917 8.39415 45.7917 9.37734 45.1853 9.98363Z"
+                          fill="url(#paint0_linear_161_2147)"
                         />
                         <path
-                          d="M58.1012 18.6045H26.899C20.8893 18.6045 16 23.4937 16 29.5034C16 35.5422 20.9401 40.4024 26.8339 40.4024H31.7292V31.863C31.7292 28.0387 34.8404 24.9274 38.6645 24.9274H38.6797C42.4958 24.9356 45.6003 28.0469 45.6003 31.863V40.4024H58.1012C64.1109 40.4024 69 35.5131 69 29.5034C69 23.4937 64.1109 18.6045 58.1012 18.6045ZM61.1853 27.9836L54.9744 34.1946C54.3681 34.801 53.3849 34.8011 52.7785 34.1946L49.673 31.0891C49.0666 30.4827 49.0666 29.4996 49.673 28.8932C50.2793 28.2868 51.2625 28.2868 51.8689 28.8932L53.8765 30.9007L58.9895 25.7878C59.5958 25.1814 60.579 25.1814 61.1854 25.7878C61.7917 26.3941 61.7917 27.3773 61.1853 27.9836Z"
-                          fill="url(#paint0_linear_0_1)"
+                          d="M36.4907 26.7721L26.4949 25.7331V13.8628C26.4949 11.7507 24.7851 10.0373 22.673 10.0327C20.5546 10.0282 18.8348 11.7443 18.8348 13.8628V33.7294H18.8L15.0193 30.5722C13.4246 29.2406 11.045 29.4902 9.76141 31.1238C8.53051 32.6904 8.76818 34.9517 10.2978 36.2282L17.9718 42.6318H40.5729V31.3945C40.5729 29.0445 38.8226 27.0626 36.4907 26.7721Z"
+                          fill="url(#paint1_linear_161_2147)"
                         />
                         <path
-                          d="M52.4907 44.7721L42.4949 43.7331V31.8628C42.4949 29.7507 40.7851 28.0373 38.673 28.0327C36.5546 28.0282 34.8348 29.7443 34.8348 31.8628V51.7294H34.8L31.0193 48.5722C29.4246 47.2406 27.045 47.4902 25.7614 49.1238C24.5305 50.6904 24.7682 52.9517 26.2978 54.2282L33.9718 60.6318H56.5729V49.3945C56.5729 47.0445 54.8226 45.0626 52.4907 44.7721Z"
-                          fill="url(#paint1_linear_0_1)"
-                        />
-                        <path
-                          d="M34.8345 66.8428C34.8345 67.7003 35.5297 68.3955 36.3872 68.3955H55.02C55.8775 68.3955 56.5728 67.7003 56.5728 66.8428V63.7373H34.8345V66.8428Z"
-                          fill="url(#paint2_linear_0_1)"
+                          d="M18.8345 48.8428C18.8345 49.7003 19.5297 50.3955 20.3872 50.3955H39.02C39.8775 50.3955 40.5728 49.7003 40.5728 48.8428V45.7373H18.8345V48.8428Z"
+                          fill="url(#paint2_linear_161_2147)"
                         />
                         <defs>
                           <linearGradient
-                            id="paint0_linear_0_1"
-                            x1="33.2826"
-                            y1="17.3977"
-                            x2="38.0629"
-                            y2="43.2589"
+                            id="paint0_linear_161_2147"
+                            x1="17.2826"
+                            y1="-0.602343"
+                            x2="22.0629"
+                            y2="25.2589"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop stopColor="#AE7D36" />
-                            <stop offset="1" stopColor="#F5F5B2" />
+                            <stop stop-color="#AE7D36" />
+                            <stop offset="1" stop-color="#F5F5B2" />
                           </linearGradient>
                           <linearGradient
-                            id="paint1_linear_0_1"
-                            x1="35.2781"
-                            y1="26.2279"
-                            x2="50.5418"
-                            y2="59.1479"
+                            id="paint1_linear_161_2147"
+                            x1="19.2781"
+                            y1="8.22788"
+                            x2="34.5418"
+                            y2="41.1479"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop stopColor="#AE7D36" />
-                            <stop offset="1" stopColor="#F5F5B2" />
+                            <stop stop-color="#AE7D36" />
+                            <stop offset="1" stop-color="#F5F5B2" />
                           </linearGradient>
                           <linearGradient
-                            id="paint2_linear_0_1"
-                            x1="41.923"
-                            y1="63.4794"
-                            x2="42.4684"
-                            y2="69.1422"
+                            id="paint2_linear_161_2147"
+                            x1="25.923"
+                            y1="45.4794"
+                            x2="26.4684"
+                            y2="51.1422"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop stopColor="#AE7D36" />
-                            <stop offset="1" stopColor="#F5F5B2" />
+                            <stop stop-color="#AE7D36" />
+                            <stop offset="1" stop-color="#F5F5B2" />
                           </linearGradient>
                         </defs>
                       </svg>
@@ -93,7 +86,6 @@ export default function DashContent() {
               </div>
             </div>
           </div>
-
           <div className="col-xl-4 col-md-6 mb-4">
             <div
               className="card border-left-warning shadow h-100 py-2"
@@ -109,46 +101,34 @@ export default function DashContent() {
                     <div className="_gold_text ">$84,326</div>
                   </div>
                   <div className="col-4 mr-2">
-                    <div className="text-xs font-weight-bold text-muted text-uppercase mb-1">
+                    <div className="svg_ctr text-xs font-weight-bold text-muted text-uppercase mb-1">
                       <svg
-                        width="82"
-                        height="82"
-                        viewBox="0 0 82 82"
+                        width="42"
+                        height="42"
+                        viewBox="0 0 42 42"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <rect
-                          width="82"
-                          height="82"
-                          rx="25"
-                          fill="white"
-                          fillOpacity="0.08"
-                        />
-                        <g clipPath="url(#clip0_0_1)">
+                        <g clip-path="url(#clip0_161_2161)">
                           <path
-                            d="M20 19V23.2H22.1V61H36.7999V52.6H45.2V61H59.8999V23.2H61.9999V19H20ZM32.6 48.4H28.4V44.2H32.6V48.4ZM32.6 40H28.4V35.7999H32.6V40ZM32.6 31.6H28.4V27.4H32.6V31.6ZM43.1 48.4H38.9V44.2H43.1V48.4ZM43.1 40H38.9V35.7999H43.1V40ZM43.1 31.6H38.9V27.4H43.1V31.6ZM53.5999 48.4H49.3999V44.2H53.5999V48.4ZM53.5999 40H49.3999V35.7999H53.5999V40ZM53.5999 31.6H49.3999V27.4H53.5999V31.6Z"
-                            fill="url(#paint0_linear_0_1)"
+                            d="M0 0V4.20003H2.09997V42H16.7999V33.6H25.2V42H39.8999V4.20003H41.9999V0H0ZM12.6 29.4H8.39996V25.2H12.6V29.4ZM12.6 21H8.39996V16.7999H12.6V21ZM12.6 12.6H8.39996V8.39996H12.6V12.6ZM23.1 29.4H18.9V25.2H23.1V29.4ZM23.1 21H18.9V16.7999H23.1V21ZM23.1 12.6H18.9V8.39996H23.1V12.6ZM33.5999 29.4H29.3999V25.2H33.5999V29.4ZM33.5999 21H29.3999V16.7999H33.5999V21ZM33.5999 12.6H29.3999V8.39996H33.5999V12.6Z"
+                            fill="url(#paint0_linear_161_2161)"
                           />
                         </g>
                         <defs>
                           <linearGradient
-                            id="paint0_linear_0_1"
-                            x1="54.2096"
-                            y1="51.7805"
-                            x2="28.6007"
-                            y2="26.3782"
+                            id="paint0_linear_161_2161"
+                            x1="34.2096"
+                            y1="32.7805"
+                            x2="8.60068"
+                            y2="7.37815"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop stopColor="#07D25F" />
-                            <stop offset="1" stopColor="#028139" />
+                            <stop stop-color="#07D25F" />
+                            <stop offset="1" stop-color="#028139" />
                           </linearGradient>
-                          <clipPath id="clip0_0_1">
-                            <rect
-                              width="42"
-                              height="42"
-                              fill="white"
-                              transform="translate(20 19)"
-                            />
+                          <clipPath id="clip0_161_2161">
+                            <rect width="42" height="42" fill="white" />
                           </clipPath>
                         </defs>
                       </svg>
@@ -174,47 +154,30 @@ export default function DashContent() {
                     <div className="_gold_text ">$84,326</div>
                   </div>
                   <div className="col-4 mr-2">
-                    <div className="text-xs font-weight-bold text-muted text-uppercase mb-1">
+                    <div className="svg_ctr text-xs font-weight-bold text-muted text-uppercase mb-1">
                       <svg
-                        width="82"
-                        height="82"
-                        viewBox="0 0 82 82"
+                        width="56"
+                        height="56"
+                        viewBox="0 0 56 56"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <rect
-                          width="82"
-                          height="82"
-                          rx="25"
-                          fill="white"
-                          fillOpacity="0.08"
+                        <path
+                          d="M21.8768 8.07275C17.1238 8.07275 13.2353 11.963 13.2353 16.7143C13.2353 21.4655 17.1255 25.3558 21.8768 25.3558C26.628 25.3558 30.5183 21.4638 30.5183 16.7143C30.52 11.963 26.628 8.07275 21.8768 8.07275ZM1.75001 46.1703C1.74651 47.1433 2.53401 47.9307 3.50701 47.9272H40.2465C41.2195 47.9307 42.007 47.1415 42.0035 46.1703C42.0035 36.589 35.2905 28.5478 26.2938 26.5335C25.634 26.3795 24.9445 26.621 24.5228 27.153L22.0553 30.3048L19.6018 27.1005C19.2815 26.6735 18.781 26.418 18.06 26.4233C8.67476 28.3045 1.75001 36.4455 1.75001 46.1703ZM39.55 9.16825C35.9205 9.16825 32.9368 12.1415 32.9368 15.7693C32.9368 19.3953 35.9205 22.3825 39.55 22.3825C43.1778 22.3825 46.1493 19.3953 46.1493 15.7693C46.1493 12.1415 43.1778 9.16825 39.55 9.16825ZM31.9725 24.8325C37.898 27.6413 42.4533 32.8423 44.4238 39.1668H52.507C53.4695 39.1615 54.2465 38.3863 54.25 37.4237C54.25 30.429 49.3518 24.5438 42.7788 23.072C42.1155 22.9215 41.426 23.1683 41.0078 23.702L39.6778 25.396L38.3583 23.6635C38.0345 23.233 37.5288 22.974 36.8025 22.9863C34.944 23.3468 33.3813 23.9768 31.9725 24.8325Z"
+                          fill="url(#paint0_linear_161_2176)"
                         />
-                        <g clipPath="url(#clip0_0_1)">
-                          <path
-                            d="M20 19V23.2H22.1V61H36.7999V52.6H45.2V61H59.8999V23.2H61.9999V19H20ZM32.6 48.4H28.4V44.2H32.6V48.4ZM32.6 40H28.4V35.7999H32.6V40ZM32.6 31.6H28.4V27.4H32.6V31.6ZM43.1 48.4H38.9V44.2H43.1V48.4ZM43.1 40H38.9V35.7999H43.1V40ZM43.1 31.6H38.9V27.4H43.1V31.6ZM53.5999 48.4H49.3999V44.2H53.5999V48.4ZM53.5999 40H49.3999V35.7999H53.5999V40ZM53.5999 31.6H49.3999V27.4H53.5999V31.6Z"
-                            fill="url(#paint0_linear_0_1)"
-                          />
-                        </g>
                         <defs>
                           <linearGradient
-                            id="paint0_linear_0_1"
-                            x1="54.2096"
-                            y1="51.7805"
-                            x2="28.6007"
-                            y2="26.3782"
+                            id="paint0_linear_161_2176"
+                            x1="2"
+                            y1="-0.999998"
+                            x2="28"
+                            y2="47.9273"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop stopColor="#07D25F" />
-                            <stop offset="1" stopColor="#028139" />
+                            <stop stop-color="#C23B01" />
+                            <stop offset="1" stop-color="#FF6E2F" />
                           </linearGradient>
-                          <clipPath id="clip0_0_1">
-                            <rect
-                              width="42"
-                              height="42"
-                              fill="white"
-                              transform="translate(20 19)"
-                            />
-                          </clipPath>
                         </defs>
                       </svg>
                     </div>

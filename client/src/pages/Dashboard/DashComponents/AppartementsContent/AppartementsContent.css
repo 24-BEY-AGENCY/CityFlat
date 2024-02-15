@@ -46,6 +46,7 @@
   padding: 5px;
   max-height: 350px;
   max-width: 300px;
+  cursor: pointer;
 }
 .app_card_image {
   display: flex;
@@ -88,6 +89,21 @@
   border-radius: 60px;
   max-height: 350px;
   max-width: 300px;
+  cursor: pointer;
+}
+.add_app_card_content:hover {
+  border: 1px solid white;
+  transition: 0.5s all ease-out;
+}
+.add_app_card_content span {
+  color: rgba(255, 255, 255, 0.27);
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
 }
 .app_title {
   color: #1a1b1a;
@@ -131,7 +147,7 @@
   position: relative;
   transition: 250ms ease;
   border-radius: 50%;
-  background: linear-gradient(315deg, #07D25F 20.24%, #028139 80.97%);
+  background: linear-gradient(315deg, #07d25f 20.24%, #028139 80.97%);
 }
 .edit-btn:before,
 .edit-btn:after {

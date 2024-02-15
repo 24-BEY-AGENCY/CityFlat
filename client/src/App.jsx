@@ -12,8 +12,8 @@ function App() {
     <>
       {/* <Home/> */}
       {/* <Details /> */}
-      {/* <Dashboard/> */}
-      <Profile/>
+      <Dashboard/>
+      {/* <Profile/> */}
     </>
   );
 }
