@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import apartmentDb from "../models/appartment.model.js";
 import { validationResult } from "express-validator";
 import orderModel from "../models/order.model.js";
+import userDb from "../models/user.model.js";
 
 //add apartment
 export function httpAddAppartment(req, res) {
@@ -48,6 +49,34 @@ export function httpGetAllApparts(req, res) {
     .catch((err) => res.status(500).json({ error: err.message }));
 }
 
+//get all appartments with the property isWishlisted
+export function httpGetAllAppartsWishlisted(req, res) {
+  const userId = req.user.id;
+  console.log(userId);
+  apartmentDb
+    .find()
+    .populate("reviews")
+    .then((apparts) => {
+      userDb.findOne({ _id: userId }, (err, user) => {
+        if (err) {
+          return res.status(500).json({ error: err.message });
+        }
+
+        if (!user) {
+          return res.status(404).json({ error: "User not found" });
+        }
+
+        const updatedApparts = apparts.map((apartment) => {
+          const isWishlist = user.wishlist.includes(apartment._id.toString());
+          return { ...apartment.toObject(), isWishlist };
+        });
+
+        res.status(200).json(appartsIsWishlistedListFormat(updatedApparts));
+      });
+    })
+    .catch((err) => res.status(500).json({ error: err.message }));
+}
+
 //get one appartment
 export function httpGetOneAppartment(req, res) {
   findOneAppartByFilter(req.params.param)
@@ -56,6 +85,34 @@ export function httpGetOneAppartment(req, res) {
         res.status(404).json({ message: "Appartment not found!" });
       } else {
         res.status(200).json(appartFormat(foundAppart));
+      }
+    })
+    .catch((err) => res.status(500).json({ error: err.message }));
+}
+
+//get one appartment with wishlist property
+export function httpGetOneAppartmentWishlist(req, res) {
+  const userId = req.user.id;
+
+  findOneAppartByFilter(req.params.param)
+    .then((foundAppart) => {
+      if (!foundAppart) {
+        res.status(404).json({ message: "Appartment not found!" });
+      } else {
+        userDb.findOne({ _id: userId }, (err, user) => {
+          if (err) {
+            return res.status(500).json({ error: err.message });
+          }
+
+          if (!user) {
+            return res.status(404).json({ error: "User not found" });
+          }
+
+          const isWishlist = user.wishlist.includes(foundAppart._id.toString());
+          foundAppart.isWishlist = isWishlist;
+
+          res.status(200).json(appartWishlistFormat(foundAppart));
+        });
       }
     })
     .catch((err) => res.status(500).json({ error: err.message }));
@@ -236,6 +293,16 @@ export function appartsListFormat(apparts) {
   return foundApparts;
 }
 
+//apartment object format to get all appartments whether wishlisted or not
+export function appartsIsWishlistedListFormat(apparts) {
+  let foundApparts = [];
+  apparts.forEach((apartment) => {
+    foundApparts.push({ ...apartment, isWishlist: apartment.isWishlist });
+  });
+  console.log(foundApparts);
+  return foundApparts;
+}
+
 //Appartment format
 export function appartFormat(appartment) {
   return {
@@ -252,5 +319,26 @@ export function appartFormat(appartment) {
     rating: appartment.rating,
     sumOfRatings: appartment.sumOfRatings,
     numOfRatings: appartment.numOfRatings,
+  };
+}
+
+//Appartment with wishlist property format
+export function appartWishlistFormat(appartment) {
+  return {
+    id: appartment._id,
+    name: appartment.name,
+    description: appartment.description,
+    defaultPrice: appartment.defaultPrice,
+    pricePerNight: appartment.pricePerNight,
+    bookedDates: appartment.bookedDates,
+    location: appartment.location,
+    rooms: appartment.rooms,
+    reviews: appartment.reviews,
+    services: appartment.services,
+    img: appartment.img,
+    rating: appartment.rating,
+    sumOfRatings: appartment.sumOfRatings,
+    numOfRatings: appartment.numOfRatings,
+    isWishlist: appartment.isWishlist,
   };
 }

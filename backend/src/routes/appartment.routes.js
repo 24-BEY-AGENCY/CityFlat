@@ -3,8 +3,10 @@ import multer from "../middlewares/multer_config.js";
 
 import {
   httpGetAllApparts,
+  httpGetAllAppartsWishlisted,
   httpAddAppartment,
   httpGetOneAppartment,
+  httpGetOneAppartmentWishlist,
   httpUpdateOneAppartment,
   httpDeleteOneAppart,
 } from "../controllers/apartment.controller.js";
@@ -28,5 +30,11 @@ appartmentRouter
 
 appartmentRouter.route("/updateReviews/:param").put(ensureUser, updateReview);
 appartmentRouter.route("/getAllAppart").get(httpGetAllApparts);
+appartmentRouter
+  .route("/getAllAppartWishlisted")
+  .get(ensureUser, httpGetAllAppartsWishlisted);
+appartmentRouter
+  .route(":id/httpGetOneAppartmentWishlist")
+  .get(ensureUser, httpGetOneAppartmentWishlist);
 
 export { appartmentRouter };
