@@ -1,60 +1,119 @@
-.mySwiper_branches {
-  width: 100%;
+:root {
+  --swiper-image-ratio: 33.3%; /* ratio 16:9 = 56.25% */
+
+  --swiper-width: 50%;
+  --swiper-inactive-scale: .85; /* makes the other slide smaller */
+  
+  /* responsive settings */
+  --swiper-mobile-width: 90%;
+  --swiper-mobile-width: 90%;
+}
+
+
+.swiper {
+    position: relative;
+    width: 100%;
+    /* height: calc(var(--swiper-width) * var(--swiper-image-ratio) / 100%); */
+    height: 20%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    margin-top: 10%;
+}
+
+.swiper-slide {
+  position: relative;
+  opacity: .5;
+  transform: scale(.84);
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  border-radius: 0.4285rem;
+  width: 30%;
+  height: 100%;
+  border: 1px solid blue;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
 }
 
-.branches.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-  margin-bottom: 4rem;
+.swiper-backface-hidden .swiper-slide {
+  transform: scale(.84) translateZ(0);
+}
+        
+.swiper-slide.swiper-slide-active {  
+  transform: scale(1) !important;
+  opacity: 1 !important;
 }
 
-.branches.swiper-slide img {
-  display: block;
-  width: 100%;
+.swiper-backface-hidden .swiper-slide.swiper-slide-active {
+  transform: scale(1) translateZ(0) !important;
 }
 
-.expandable-boxes {
+.swiper-image {
   position: relative;
-}
-
-.expandable-box {
-  position: absolute;
-  bottom: 1rem;
-  left: -1rem;
-  width: 30%;
-  height: 80px;
-  float: left;
-  background: white;
-  border-radius: 25px;
-  padding: 10px;
-  box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
-  display: grid;
-  grid-template-columns: 60px 1fr;
+  width: 100%;
+  height: 100%;
+  /* padding-top: var(--swiper-image-ratio); */
+  padding-top: 50px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 29px 41px 0px rgba(87, 190, 192, 0.5);
+  background-color: #929ec9;
+  border: 1px solid orange;
 }
 
-.expandable-box.open {
-  border-color: #dd0000;
-  width: 100%;
-  height: 80px;
-  margin: 0;
+    
+
+.swiper-button-next,
+.swiper-button-prev {
+  padding: 8px;
+  width: 12px;
+  height: 12px;
+  margin-top: 0;
+  background-color: rgba(0, 0, 0, .4);
+  border-radius: 50%;
 }
-.expandable-box.out {
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  border: none;
-  padding: 0;
-  margin: 0;
-  opacity: 0;
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: #fff;
+  font-size: 12px;
+}
+
+.swiper-button-next {
+  transform: translate(50%, -50%);
+  /* right: calc((100% - var(--swiper-width)) / 2); */
+}
+
+.swiper-button-prev {
+  transform: translate(-50%, -50%);
+  /* left: calc((100% - var(--swiper-width)) / 2); */
+}
+
+@media only screen and (max-width: 768px) {
+  .swiper {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-slide {
+    width: 100%;
+    transform: scale(var(--swiper-mobile-inactive-scale));
+  }
+  
+  .swiper-backface-hidden .swiper-slide.swiper-slide {
+    transform: scale(var(--swiper-mobile-inactive-scale)) translateZ(0);
+  }
+/* 
+  .swiper-button-next {
+    right: calc((100% - var(--swiper-mobile-width)) / 2);
+  }
+
+  .swiper-button-prev {
+    left: calc((100% - var(--swiper-mobile-width)) / 2);
+  } */
 }

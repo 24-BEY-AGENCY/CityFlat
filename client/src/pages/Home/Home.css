@@ -455,7 +455,9 @@
   display: flex; /* Allow items to wrap to the next line */ /* Align items to the top of the container */
   position: relative;
   align-items: center;
+  justify-content: center;
   padding: 20px;
+  border: 1px solid orange;
 }
 ._testimonial_content {
   width: 100%;

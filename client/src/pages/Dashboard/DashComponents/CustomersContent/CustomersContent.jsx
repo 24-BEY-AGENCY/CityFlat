@@ -80,7 +80,7 @@ export default function CustomersContent() {
                     }}
                   ></div>
 
-                  <Modal show={showModal} onHide={closeModal} size={"md"}>
+                  <Modal title="My Modal" show={showModal} onHide={closeModal} size="md">
                     <div className="delete-form d-flex justify-content-center align-items-center flex-column">
                       <svg
                         width="50"

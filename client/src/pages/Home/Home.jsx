@@ -204,16 +204,19 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="_testimonial_container">
-          {/* <TestimonialsSlider /> */}
-          <div className="_testimonial_content">
+        <div className="_testimonial_container">
+          <TestimonialsSlider />
+        </div>
+
+        {/* <section className="_testimonial_container">
             <p>testimonials</p>
+          <div className="_testimonial_content">
             <div className="testo_ctr">
               <div className="testo_left"></div>
               <div className="testo_right"></div>
             </div>
           </div>
-        </section>
+        </section> */}
         <div className="_socials_container">
           <div className="socials_ctr">
             <div className="join_flower_ctr">
