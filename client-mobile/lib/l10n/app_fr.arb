@@ -1,0 +1,11 @@
+{
+    "language":"Français",
+    "helloWorld": "Bonjour le monde !",
+    "multiLanguage": "Multilingue",
+    "hello": "Bonjour {username} !",
+    "apartments": "Appartements",
+    "adminSection": "Section administrateur"
+
+
+
+}
