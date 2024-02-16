@@ -69,7 +69,10 @@ dependencies:
   rename: ^2.1.1
   # rename package command: flutter pub global run rename --appname "Cityflat"
   #  rename package command: flutter pub global run rename --bundleId com.cityflat.cityflat
-  flutter_neumorphic: ^3.2.0
+  flutter_neumorphic:
+    git:
+      url: https://github.com/den0206/Flutter-Neumorphic.git
+      ref: feature/remoce_accentcolor
   flutter_easyloading: ^3.0.5
   country_code_picker: ^3.0.0
   intl_phone_field: ^3.2.0
