@@ -1,0 +1,10 @@
+{
+    "language":"Deutch",
+    "helloWorld": "Hallo Welt!",
+    "multiLanguage": "Mehrere Sprachen",
+    "hello": "Hallo {username}!",
+    "apartments": "Wohnungen",
+    "adminSection": "Admin-Bereich"
+
+
+}

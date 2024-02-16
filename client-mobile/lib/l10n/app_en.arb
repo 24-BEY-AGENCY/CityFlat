@@ -1,0 +1,37 @@
+{
+    "language":"English",
+    "@language": {
+     "description": "The current language"
+  },
+
+    "helloWorld": "Hello World!",
+    "@helloWorld": {
+     "description": "The conventional newborn programmer greeting"
+  },
+
+    "multiLanguage": "Multi Language",
+    "@multiLanguage": {
+     "description": "App title"
+  },
+
+    "hello": "Hello {username}!",
+    "@hello": {
+     "description": "A welcome message",
+     "placeholders": {
+        "username": {
+            "type": "String"
+        }
+     }
+  },
+
+    "apartments": "Apartments",
+    "@apartments": {
+     "description": "Apartments"
+  },
+
+    "adminSection": "Admin section",
+    "@adminSection": {
+     "description": "Admin section"
+  }
+  
+}
