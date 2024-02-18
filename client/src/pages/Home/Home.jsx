@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import Navbar from "../../components/navbar/Navbar";
 import logo from "../../assets/homepage_mats/logo.png";
@@ -9,6 +9,7 @@ import Cards from "../../components/cards/Cards";
 import TestimonialsSlider from "../../components/sliders/TestimonialsSlider";
 import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Home() {
   const cardDetails = [
@@ -16,6 +17,14 @@ export default function Home() {
     { id: 2, title: "Card 2", description: "Description for Card 2" },
     // Add more card details as needed
   ];
+  
+  const [apartmentList, setApartmentList] = useState([]);
+   useEffect(() => {
+     const storedApartments = JSON.parse(localStorage.getItem("apartmentList"));
+     if (storedApartments) {
+       setApartmentList(storedApartments);
+     }
+   }, []);
   return (
     <>
       {/* <Navbar /> */}
@@ -145,9 +154,9 @@ export default function Home() {
         <div className="_cards_container">
           <div className="cards_layer"></div>
           <div className="card_ctr">
-            {cardDetails.map((card) => (
-              <Link key={card.id} to={`/details/${card.id}`}>
-                <Cards />
+            {apartmentList.map((card, i) => (
+              <Link key={i} to={`/details/${card.id}`} state={{ card }}>
+                <Cards card={card} />
               </Link>
             ))}
           </div>

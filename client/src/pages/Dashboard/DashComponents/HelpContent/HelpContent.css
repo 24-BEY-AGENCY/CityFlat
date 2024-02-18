@@ -27,13 +27,13 @@
 .form_container input {
   border-radius: 60px;
   border: 1px solid #dedede;
-  background: #dedede;
+  /* background: #dedede; */
   box-shadow: -5px -3px 9.4px 0px #fff inset;
 }
 .form_container textarea {
   border-radius: 30px;
   border: 1px solid #dedede;
-  background: #dedede;
+  /* background: #dedede; */
   box-shadow: -5px -3px 9.4px 0px #fff inset;
 }
 .form-btn button {

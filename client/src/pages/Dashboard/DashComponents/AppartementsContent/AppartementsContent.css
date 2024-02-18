@@ -7,6 +7,7 @@
   padding: 0;
   max-height: 100%;
   overflow: auto;
+  gap: 1rem;
 }
 
 .app_cards_item {
@@ -52,6 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 140px;
 }
 .app_card_image img {
   width: 90%;
@@ -241,8 +243,6 @@
   align-items: center;
 }
 
-
-
 .img-thumbs {
   background: #eee;
   border: 1px solid #ccc;
@@ -257,7 +257,7 @@
 
 .wrapper-thumb {
   position: relative;
-  display:inline-block;
+  display: inline-block;
   margin: 1rem 0;
   justify-content: space-around;
   transition: 1s all ease;
@@ -274,25 +274,25 @@
   transition: 1s all ease;
 }
 
-.remove-btn{
-  position:absolute;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:.7rem;
-  top:-5px;
-  right:10px;
-  width:20px;
-  height:20px;
-  background:white;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
+.remove-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  top: -5px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.remove-btn:hover{
+.remove-btn:hover {
   box-shadow: 0px 0px 3px grey;
-  transition:all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .dropzone-wrapper {
@@ -336,4 +336,82 @@
   box-shadow: none;
   border-radius: 0;
   margin-bottom: 0;
+}
+
+/* COUNTER CSS  */
+._modal_counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 2px;
+  max-height: 40px;
+  margin-bottom: 15px;
+  border-radius: 60px;
+  border: 1px solid #dedede;
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: -5px -3px 9.4px 0px #fff inset;
+}
+._modal_counter .minus,
+._modal_counter .plus {
+  background: rgba(13, 178, 84, 0.14);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  padding: 0.2rem;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0db254;
+  cursor: pointer;
+}
+
+.__services .checkbox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.__services .checkbox__input {
+  position: absolute;
+  width: 1.375em;
+  height: 1.375em;
+  opacity: 0;
+  cursor: pointer;
+}
+.__services .checkbox__input:checked + .checkbox__icon .tick {
+  stroke-dashoffset: 0;
+}
+.__services .checkbox__icon {
+  width: 1.375em;
+  height: 1.375em;
+  flex-shrink: 0;
+  overflow: visible;
+  
+}
+.__services .checkbox__icon .tick {
+  stroke-dasharray: 20px;
+  stroke-dashoffset: 20px;
+  transition: stroke-dashoffset 0.2s ease-out;
+}
+.__services .checkbox__label {
+  margin-left: 0.5em;
+  border-radius: 23.978px;
+  border: 0.959px solid #dedede;
+  background: rgba(255, 255, 255, 0.46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 20px;
+  color: #bcbcbc;
+  font-family: "TT Commons", sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
 }

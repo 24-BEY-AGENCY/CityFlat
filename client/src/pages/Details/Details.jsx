@@ -6,11 +6,15 @@ import "glightbox/dist/css/glightbox.css";
 import Footer from "../../components/footer/Footer";
 import CalendarComp from "../../components/calendar/CalendarComp";
 import logo from "../../assets/homepage_mats/city-flat.png"
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+
 
 
 export default function Details() {
-  const { id } = useParams(); // Get the id parameter from the URL
+   const location = useLocation();
+  const { id } = useParams();
+  const { card } = location.state || {};
+  console.log(card)
   useEffect(() => {
     const lightbox = GLightbox({
       touchNavigation: true,
@@ -59,7 +63,7 @@ export default function Details() {
                     </clipPath>
                   </defs>
                 </svg>
-                / Appartement B
+                / {card.apartmentName}
               </span>
             </div>
             <div id="gallery" className="photos-grid-container gallery">
@@ -196,7 +200,7 @@ export default function Details() {
                         </clipPath>
                       </defs>
                     </svg>
-                    Dusseldorf, Allemagne
+                    {card.location}
                   </span>
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
@@ -253,7 +257,7 @@ export default function Details() {
                   </aside>
                   <div>
                     <section className="_small_title">Bedroom</section>
-                    <section className="_medium_title">4 rooms</section>
+                    <section className="_medium_title">{card.bedroom} rooms</section>
                   </div>
                   <aside>
                     <svg
@@ -307,18 +311,15 @@ export default function Details() {
                     </svg>
                   </aside>
                   <div>
-                    <section className="_small_title">Bedroom</section>
-                    <section className="_medium_title">2 rooms</section>
+                    <section className="_small_title">bathroom</section>
+                    <section className="_medium_title">{card.bathroom} rooms</section>
                   </div>
                 </div>
               </div>
               <div className="d-flex flex-column mt-2">
                 <span className="_title p-0">description</span>
                 <span className="_description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Optio, hic recusandae eaque, molestiae dolorum, enim quibusdam
-                  ducimus sit vel repellendus suscipit aperiam corrupti! Vel
-                  debitis quam illo dignissimos provident aliquid.
+                  {card.description}
                 </span>
               </div>
               <div className="d-flex flex-column mt-2">

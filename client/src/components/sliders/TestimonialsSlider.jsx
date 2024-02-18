@@ -24,30 +24,30 @@ export default function TestimonialsSlider() {
         className="swiper-wrapper"
       >
         <SwiperSlide className="swiper-slide">
-          <div class="swiper-image">
-            <div class="image">
+          <div className="swiper-image">
+            <div className="image">
               
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide className="swiper-slide">
-          <div class="swiper-image">
-            <div class="image"></div>
+          <div className="swiper-image">
+            <div className="image"></div>
           </div>
         </SwiperSlide>
         <SwiperSlide className="swiper-slide">
-          <div class="swiper-image">
-            <div class="image"></div>
+          <div className="swiper-image">
+            <div className="image"></div>
           </div>
         </SwiperSlide>
         <SwiperSlide className="swiper-slide">
-          <div class="swiper-image">
-            <div class="image"></div>
+          <div className="swiper-image">
+            <div className="image"></div>
           </div>
         </SwiperSlide>
         <SwiperSlide className="swiper-slide">
-          <div class="swiper-image">
-            <div class="image"></div>
+          <div className="swiper-image">
+            <div className="image"></div>
           </div>
         </SwiperSlide>
       </Swiper>

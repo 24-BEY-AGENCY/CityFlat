@@ -3,6 +3,7 @@ import "./AppartementsContent.css";
 import apartement from "../../../../assets/homepage_mats/vue-du-modele-maison-3d.png";
 import Modal from "../../../../components/modals/Modal";
 import { useModal } from "../../../../hooks/useModal";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AppartementsContent() {
   const { showModal, openModal, closeModal } = useModal();
@@ -15,12 +16,10 @@ export default function AppartementsContent() {
     endDate: "",
     newPrice: "",
     location: "",
-    bedroom1: "",
-    bedroom2: "",
-    service1: "",
-    service2: "",
-    service3: "",
-    service4: "",
+    bedroom: 0,
+    bathroom: 0,
+    parking: "",
+    food: "",
     pictures: [],
     description: "",
   });
@@ -34,12 +33,10 @@ export default function AppartementsContent() {
         endDate: "",
         newPrice: "",
         location: "",
-        bedroom1: "",
-        bedroom2: "",
-        service1: "",
-        service2: "",
-        service3: "",
-        service4: "",
+        bedroom: 0,
+        bathroom: 0,
+        parking: "",
+        food: "",
         pictures: [],
         description: "",
       });
@@ -47,7 +44,6 @@ export default function AppartementsContent() {
   }, [showModal]);
 
   useEffect(() => {
-    const storedApartments = JSON.parse(localStorage.getItem("apartmentList"));
     if (storedApartments) {
       setApartmentList(storedApartments);
     }
@@ -76,21 +72,53 @@ export default function AppartementsContent() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageChange = (event) => {
+  const handleCounterChange = (type, value) => {
+    const updatedValue = parseInt(formData[type]) + value;
+    setFormData({ ...formData, [type]: updatedValue });
+  };
+
+  const handleImageChange = async (event) => {
     const selectedImages = event.target.files;
     const newPictures = [];
 
     for (let i = 0; i < selectedImages.length; i++) {
-      const imageURL = URL.createObjectURL(selectedImages[i]);
-      newPictures.push({ id: i, url: imageURL });
+      const file = selectedImages[i];
+      const base64Image = await convertToBase64(file);
+      const id = Date.now() + i;
+      newPictures.push({ id, url: base64Image });
     }
 
-    setFormData({ ...formData, pictures: newPictures });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      pictures: [...prevFormData.pictures, ...newPictures],
+    }));
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const handleRemoveImage = (id) => {
+    const updatedPictures = formData.pictures.filter(
+      (image) => image.id !== id
+    );
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      pictures: updatedPictures,
+    }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const updatedApartmentList = [...apartmentList, formData];
+    const updatedApartmentList = [
+      ...apartmentList,
+      { ...formData, id: Date.now() },
+    ];
     setApartmentList(updatedApartmentList);
     localStorage.setItem("apartmentList", JSON.stringify(updatedApartmentList));
     setFormData({
@@ -167,17 +195,7 @@ export default function AppartementsContent() {
             <li className="app_cards_item">
               <div className="app_card">
                 <div className="app_card_image">
-                  {app.pictures.map((pic, j) => (
-                    <img
-                      key={j}
-                      src={
-                        pic.url.startsWith("blob:")
-                          ? pic.url
-                          : URL.createObjectURL(pic.url)
-                      }
-                      alt={`app-${i}-image-${j}`}
-                    />
-                  ))}
+                  <img src={app.pictures[0].url} />
                 </div>
 
                 <div className="app_card_content">
@@ -225,7 +243,7 @@ export default function AppartementsContent() {
                         </clipPath>
                       </defs>
                     </svg>
-                    Lorem ipsum dolor sit amet
+                    {app.location}
                   </p>
                   <div className="app_card_heading d-flex justify-content-between">
                     <div className="d-flex align-items-center gap-2">
@@ -332,7 +350,7 @@ export default function AppartementsContent() {
         })}
       </ul>
       <Modal title="My Modal" show={showModal} onHide={closeModal} size="lg">
-        <div class="add_form">
+        <div className="add_form">
           <h1>add new apparatement</h1>
           <form action="" onSubmit={handleSubmit} className="form_container">
             <label for="apartmentName">apartment Name :</label>
@@ -342,8 +360,8 @@ export default function AppartementsContent() {
               name="apartmentName"
               value={formData.apartmentName}
               onChange={handleInputChange}
-              placeholder="Apartment Name"
-              // required
+              placeholder="Enter Apartment Name"
+              required
             />
 
             <div className="row">
@@ -355,8 +373,8 @@ export default function AppartementsContent() {
                   name="price"
                   value={formData.price}
                   onChange={handleInputChange}
-                  placeholder="Apartment Name"
-                  // required
+                  placeholder="Enter Price"
+                  required
                 />
               </div>
               <div className="col-4">
@@ -368,7 +386,7 @@ export default function AppartementsContent() {
                   value={formData.startDate}
                   onChange={handleInputChange}
                   placeholder="Start date"
-                  // required
+                  required
                 />
               </div>
               <div className="col-4">
@@ -380,12 +398,12 @@ export default function AppartementsContent() {
                   value={formData.endDate}
                   onChange={handleInputChange}
                   placeholder="End date"
-                  // required
+                  required
                 />
               </div>
             </div>
 
-            <div className="row">
+            {/* <div className="row">
               <div className="col-4">
                 <label for="first">add new price:</label>
                 <input
@@ -398,7 +416,7 @@ export default function AppartementsContent() {
                   // required
                 />
               </div>
-            </div>
+            </div> */}
 
             <label for="last">location:</label>
             <input
@@ -408,77 +426,158 @@ export default function AppartementsContent() {
               value={formData.location}
               onChange={handleInputChange}
               placeholder="Enter location"
-              // required
+              required
             />
 
             <div className="row">
-              <div className="col-4">
+              <div className="col-6 col-md-3">
                 <label for="first">bedroom:</label>
-                <input
-                  type="text"
-                  id="first"
-                  name="first"
-                  placeholder="Enter your first name"
-                  // required
-                />
+                <div className="_modal_counter border">
+                  <button
+                    className="minus"
+                    onClick={() => handleCounterChange("bedroom", -1)}
+                    disabled={formData.bedroom === 0}
+                  >
+                    -
+                  </button>
+                  <span>{formData.bedroom}</span>
+                  <span
+                    className="plus"
+                    onClick={() => handleCounterChange("bedroom", 1)}
+                  >
+                    +
+                  </span>
+                </div>
               </div>
-              <div className="col-4">
-                <label for="first">bedroom:</label>
-                <input
-                  type="text"
-                  id="first"
-                  name="first"
-                  placeholder="Enter your first name"
-                  // required
-                />
+              <div className="col-6 col-md-3">
+                <label for="first">bathroom:</label>
+                <div className="_modal_counter border">
+                  <button
+                    className="minus"
+                    onClick={() => handleCounterChange("bathroom", -1)}
+                    disabled={formData.bathroom === 0}
+                  >
+                    -
+                  </button>
+                  <span>{formData.bathroom}</span>
+                  <span
+                    className="plus"
+                    onClick={() => handleCounterChange("bathroom", 1)}
+                  >
+                    +
+                  </span>
+                </div>
               </div>
             </div>
 
             <div className="row">
               <label for="first">services:</label>
-              <div className="col-3">
-                <input
-                  type="text"
-                  id="first"
-                  name="first"
-                  placeholder="Enter your first name"
-                  // required
-                />
+              <div className="__services col-5 col-md-3">
+                <label for="myCheckbox" class="checkbox">
+                  <input
+                    class="checkbox__input"
+                    type="checkbox"
+                    id="myCheckbox"
+                    checked={formData.parking}
+                    onChange={() =>
+                      setFormData({ ...formData, parking: !formData.parking })
+                    }
+                  />
+                  <svg
+                    class="checkbox__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 22 22"
+                  >
+                    <rect
+                      width="21"
+                      height="21"
+                      x=".5"
+                      y=".5"
+                      fill="#FFF"
+                      stroke="#006F94"
+                      rx="3"
+                    />
+                    <path
+                      class="tick"
+                      stroke="#6EA340"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-width="4"
+                      d="M4 10l5 5 9-9"
+                    />
+                  </svg>
+                  <span class="checkbox__label">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-car-front"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0m10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17s2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276" />
+                      <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.8.8 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155s4.037-.084 5.592-.155A1.48 1.48 0 0 0 15 9.611v-.413q0-.148-.03-.294l-.335-1.68a.8.8 0 0 0-.43-.563 1.8 1.8 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3z" />
+                    </svg>
+                    <span>parking</span>
+                  </span>
+                </label>
               </div>
-              <div className="col-3">
-                <input
-                  type="text"
-                  id="first"
-                  name="first"
-                  placeholder="Enter your first name"
-                  // required
-                />
-              </div>
-              <div className="col-3">
-                <input
-                  type="text"
-                  id="first"
-                  name="first"
-                  placeholder="Enter your first name"
-                  // required
-                />
-              </div>
-              <div className="col-3">
-                <input
-                  type="text"
-                  id="first"
-                  name="first"
-                  placeholder="Enter your first name"
-                  // required
-                />
+              <div className="__services col-5 col-md-3">
+                <label for="myCheckbox_2" class="checkbox">
+                  <input
+                    class="checkbox__input"
+                    type="checkbox"
+                    id="myCheckbox_2"
+                    checked={formData.food}
+                    onChange={() =>
+                      setFormData({ ...formData, food: !formData.food })
+                    }
+                  />
+                  <svg
+                    class="checkbox__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 22 22"
+                  >
+                    <rect
+                      width="21"
+                      height="21"
+                      x=".5"
+                      y=".5"
+                      fill="#FFF"
+                      stroke="#006F94"
+                      rx="3"
+                    />
+                    <path
+                      class="tick"
+                      stroke="#0DB254"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-width="4"
+                      d="M4 10l5 5 9-9"
+                    />
+                  </svg>
+                  <span class="checkbox__label">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-cup-straw"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M13.902.334a.5.5 0 0 1-.28.65l-2.254.902-.4 1.927c.376.095.715.215.972.367.228.135.56.396.56.82q0 .069-.011.132l-.962 9.068a1.28 1.28 0 0 1-.524.93c-.488.34-1.494.87-3.01.87s-2.522-.53-3.01-.87a1.28 1.28 0 0 1-.524-.93L3.51 5.132A1 1 0 0 1 3.5 5c0-.424.332-.685.56-.82.262-.154.607-.276.99-.372C5.824 3.614 6.867 3.5 8 3.5c.712 0 1.389.045 1.985.127l.464-2.215a.5.5 0 0 1 .303-.356l2.5-1a.5.5 0 0 1 .65.278M9.768 4.607A14 14 0 0 0 8 4.5c-1.076 0-2.033.11-2.707.278A3.3 3.3 0 0 0 4.645 5c.146.073.362.15.648.222C5.967 5.39 6.924 5.5 8 5.5c.571 0 1.109-.03 1.588-.085zm.292 1.756C9.445 6.45 8.742 6.5 8 6.5c-1.133 0-2.176-.114-2.95-.308a6 6 0 0 1-.435-.127l.838 8.03c.013.121.06.186.102.215.357.249 1.168.69 2.438.69s2.081-.441 2.438-.69c.042-.029.09-.094.102-.215l.852-8.03a6 6 0 0 1-.435.127 9 9 0 0 1-.89.17zM4.467 4.884s.003.002.005.006zm7.066 0-.005.006zM11.354 5a3 3 0 0 0-.604-.21l-.099.445.055-.013c.286-.072.502-.149.648-.222" />
+                    </svg>
+                    <span>food</span>
+                  </span>
+                </label>
               </div>
             </div>
 
-            <div className="my-5">
+            <div>
               <label htmlFor="pictures">Pictures:</label>
               <div className="row">
                 <div className="col">
-                  <div className="form-group mt-5">
+                  <div className="form-group ">
                     <label>Choose Images</label>
                     <input
                       type="file"
@@ -486,6 +585,7 @@ export default function AppartementsContent() {
                       className="form-control"
                       multiple
                       onChange={handleImageChange}
+                      required
                     />
                   </div>
                   <div
@@ -501,6 +601,12 @@ export default function AppartementsContent() {
                           alt="Preview"
                           className="img-preview-thumb"
                         />
+                        <div
+                          className="remove-btn"
+                          onClick={() => handleRemoveImage(image.id)}
+                        >
+                          x
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -508,7 +614,20 @@ export default function AppartementsContent() {
               </div>
             </div>
 
-            <div class="wrap">
+            <div>
+              <label>Description</label>
+              <textarea
+                className="form-control"
+                rows="3"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                placeholder="Enter description"
+                required
+              ></textarea>
+            </div>
+
+            <div className="wrap">
               <button type="submit" onclick="solve()">
                 Submit
               </button>

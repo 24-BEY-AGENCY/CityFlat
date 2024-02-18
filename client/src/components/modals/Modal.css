@@ -6,3 +6,9 @@
 .modal-body {
   padding: 4rem;
 }
+
+@media (max-width: 480px) {
+ .modal-body {
+  padding: 4rem 1rem;
+ }
+}

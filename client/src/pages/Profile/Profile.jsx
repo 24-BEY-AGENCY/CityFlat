@@ -178,79 +178,79 @@ export default function Profile() {
                       role="tabpanel"
                       aria-labelledby="ex3-tab-1"
                     >
-                      <div class="profile_container">
-                        <div class="col-lg-10 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
+                      <div className="profile_container">
+                        <div className="col-lg-10 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
                           <form action="" method="POST">
-                            <div class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                  <label class="profile_details_text">
+                            <div className="row">
+                              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div className="form-group">
+                                  <label className="profile_details_text">
                                     Full Name:
                                   </label>
                                   <input
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    className="form-control"
                                     value=""
                                     required
                                   />
                                 </div>
                               </div>
                             </div>
-                            <div class="Mobile">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                  <label class="profile_details_text">
+                            <div className="Mobile">
+                              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div className="form-group">
+                                  <label className="profile_details_text">
                                     Mobile Number:
                                   </label>
                                   <input
                                     type="tel"
                                     name="phone"
-                                    class="form-control"
+                                    className="form-control"
                                     value=""
                                     required
                                   />
                                 </div>
                               </div>
                             </div>
-                            <div class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                  <label class="profile_details_text">
+                            <div className="row">
+                              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div className="form-group">
+                                  <label className="profile_details_text">
                                     Email:
                                   </label>
                                   <input
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    className="form-control"
                                     value=""
                                     required
                                   />
                                 </div>
                               </div>
                             </div>
-                            <div class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                  <label class="profile_details_text">
+                            <div className="row">
+                              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div className="form-group">
+                                  <label className="profile_details_text">
                                     Password:
                                   </label>
                                   <input
                                     type="password"
                                     name="password"
-                                    class="form-control"
+                                    className="form-control"
                                     value=""
                                     required
                                   />
                                 </div>
                               </div>
                             </div>
-                            <div class="row mt-5">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 submit d-flex justify-content-center gap-2">
-                                <div class="customer-form-btn d-flex form-group col-5 col-md-2">
+                            <div className="row mt-5">
+                              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 submit d-flex justify-content-center gap-2">
+                                <div className="customer-form-btn d-flex form-group col-5 col-md-2">
                                   <button className="col">cancel</button>
                                 </div>
-                                <div class="customer-form-btn d-flex form-group col-5 col-md-2">
+                                <div className="customer-form-btn d-flex form-group col-5 col-md-2">
                                   <button className="col" id="special-btn">
                                     change
                                   </button>
