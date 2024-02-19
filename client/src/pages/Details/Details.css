@@ -3,11 +3,12 @@
   height: auto;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 ._details_big_container {
   width: 1440px;
   margin-top: 7rem;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -154,7 +155,7 @@
   grid-template-rows: 1fr 1fr;
   grid-gap: 0.5rem 0;
   align-items: start;
-  padding: 0rem 4rem;
+  padding: 0rem 2rem 0rem 4rem;
 }
 .square {
   display: flex;
@@ -170,7 +171,7 @@
   grid-template-rows: 0.5fr 1fr;
   grid-gap: 1rem;
   align-items: start;
-  padding: 0rem 4rem;
+   padding: 0rem 2rem 0rem 4rem;
   margin-top: 1rem;
 }
 #_right_box_button {
@@ -200,7 +201,7 @@
 .left_side {
   width: 60%;
   height: 100%;
-  padding: 30px 10px 30px 0;
+  padding: 30px 0px 0px 0;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.1fr 0.8fr 0.5fr 0.5fr;
@@ -268,6 +269,7 @@
   display: grid;
   grid-template-columns: 0.1fr 1fr;
   grid-gap: 1rem 0;
+  margin-bottom: 1rem;
 }
 ._review_box {
   width: 100%;
@@ -285,6 +287,19 @@
   border-radius: 50%;
   width: 100%;
   object-fit: cover;
+}
+
+._mobile-box {
+  background: #0e0e0e;
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._mobile-box button {
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -316,3 +331,11 @@
     grid-gap: 1rem;
   }
 }
+
+@media (min-width: 1024px) {
+  ._mobile-box {
+    display: none;
+  }
+}
+
+
