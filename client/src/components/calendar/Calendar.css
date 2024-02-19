@@ -79,12 +79,15 @@
     linear-gradient(315deg, #07d25f 20.24%, #028139 80.97%)
   ) !important;
 }
+._details_calendar.rmdp-shadow {
+  box-shadow: none !important;
+}
 @media (max-width: 768px) {
   ._calendar_ctr {
     display: flex;
     justify-content: center;
   }
   ._details_calendar.rmdp-wrapper {
-    width: 50% !important;
+    width: 70% !important;
   }
 }
