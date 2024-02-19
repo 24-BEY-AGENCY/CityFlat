@@ -16,6 +16,7 @@ export default function AppartementsContent() {
     endDate: "",
     newPrice: "",
     location: "",
+    more: [],
     bedroom: 0,
     bathroom: 0,
     parking: "",
@@ -33,6 +34,7 @@ export default function AppartementsContent() {
         endDate: "",
         newPrice: "",
         location: "",
+        more: [],
         bedroom: 0,
         bathroom: 0,
         parking: "",
@@ -48,24 +50,6 @@ export default function AppartementsContent() {
       setApartmentList(storedApartments);
     }
   }, []);
-  // const [images, setImages] = useState([]);
-
-  // const handleImageChange = (event) => {
-  //   const selectedImages = event.target.files;
-  //   const newImages = [];
-
-  //   for (let i = 0; i < selectedImages.length; i++) {
-  //     const imageURL = URL.createObjectURL(selectedImages[i]);
-  //     newImages.push({ id: i, url: imageURL });
-  //   }
-
-  //   setImages([...images, ...newImages]);
-  // };
-
-  // const handleRemoveImage = (id) => {
-  //   const updatedImages = images.filter((image) => image.id !== id);
-  //   setImages(updatedImages);
-  // };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -77,6 +61,41 @@ export default function AppartementsContent() {
     setFormData({ ...formData, [type]: updatedValue });
   };
 
+//  const handleImageChange = async (event) => {
+//    const selectedImages = event.target.files;
+//    const newPictures = [];
+
+//    for (let i = 0; i < selectedImages.length; i++) {
+//      const file = selectedImages[i];
+//      const base64Image = await convertToBase64(file);
+//      const id = Date.now() + i;
+//      newPictures.push({ id, url: base64Image });
+//    }
+
+//    let updatedPictures = {};
+
+//    if (formData.pictures.length + newPictures.length <= 4) {
+//      updatedPictures = {
+//        pictures: formData.pictures.concat(newPictures),
+//      };
+//    } else {
+//      updatedPictures = {
+//        pictures: formData.pictures.concat(
+//          newPictures.slice(0, 4 - formData.pictures.length)
+//        ),
+//        more: formData.more
+//          ? formData.more.concat(newPictures.slice(4 - formData.pictures.length))
+//          : newPictures.slice(4 - formData.pictures.length),
+//      };
+//    }
+
+//    setFormData((prevFormData) => ({
+//      ...prevFormData,
+//      ...updatedPictures,
+//    }));
+//  };
+
+  
   const handleImageChange = async (event) => {
     const selectedImages = event.target.files;
     const newPictures = [];
@@ -88,11 +107,31 @@ export default function AppartementsContent() {
       newPictures.push({ id, url: base64Image });
     }
 
+    let updatedPictures = {};
+
+    if (formData.pictures.length + newPictures.length <= 4) {
+      updatedPictures = {
+        pictures: formData.pictures.concat(newPictures),
+      };
+    } else {
+      updatedPictures = {
+        pictures: formData.pictures.concat(
+          newPictures.slice(0, 4 - formData.pictures.length)
+        ),
+        more: formData.more
+          ? formData.more.concat(
+              newPictures.slice(4 - formData.pictures.length)
+            )
+          : newPictures.slice(4 - formData.pictures.length),
+      };
+    }
+
     setFormData((prevFormData) => ({
       ...prevFormData,
-      pictures: [...prevFormData.pictures, ...newPictures],
+      ...updatedPictures,
     }));
   };
+
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -117,23 +156,23 @@ export default function AppartementsContent() {
     event.preventDefault();
     const updatedApartmentList = [
       ...apartmentList,
-      { ...formData, id: Date.now() },
+      { ...formData, id: uuidv4() },
     ];
     setApartmentList(updatedApartmentList);
     localStorage.setItem("apartmentList", JSON.stringify(updatedApartmentList));
     setFormData({
+      ...formData,
       apartmentName: "",
       price: "",
       startDate: "",
       endDate: "",
       newPrice: "",
       location: "",
-      bedroom1: "",
-      bedroom2: "",
-      service1: "",
-      service2: "",
-      service3: "",
-      service4: "",
+      more: [],
+      bedroom: 0,
+      bathroom: 0,
+      parking: "",
+      food: "",
       pictures: [],
       description: "",
     });
@@ -195,12 +234,12 @@ export default function AppartementsContent() {
             <li className="app_cards_item">
               <div className="app_card">
                 <div className="app_card_image">
-                  <img src={app.pictures[0].url} />
+                  <img src={app?.pictures[0]?.url} />
                 </div>
 
                 <div className="app_card_content">
                   <div className="app_card_heading d-flex justify-content-between">
-                    <span className="app_title">{app.apartmentName}</span>
+                    <span className="app_title">{app?.apartmentName}</span>
                     <span className="app_title">
                       <svg
                         width="16"
@@ -243,7 +282,7 @@ export default function AppartementsContent() {
                         </clipPath>
                       </defs>
                     </svg>
-                    {app.location}
+                    {app?.location}
                   </p>
                   <div className="app_card_heading d-flex justify-content-between">
                     <div className="d-flex align-items-center gap-2">

@@ -67,33 +67,44 @@ export default function Details() {
               </span>
             </div>
             <div id="gallery" className="photos-grid-container gallery">
-              <div className="main-photo img-box">
+              <div className="main-photo">
                 <a
-                  href="https://plan-a.ca/wp-content/uploads/2022/12/4800_paul_pouliot_30207_web-scaled.jpg"
+                  href={card.pictures[0].url}
                   className="glightbox"
                   data-glightbox="type: image"
                 >
-                  <img
-                    src="https://i.pinimg.com/736x/ed/1a/da/ed1adacf4d70edc03d87315ac3769a85.jpg"
-                    alt="image"
-                  />
+                  <img src={card.pictures[0].url} alt="image" />
                 </a>
               </div>
               <div>
                 <div className="sub">
-                  <div className="img-box">
+                  {card?.pictures?.slice(1).map((appPic, i) => (
+                    <div className="img-box" key={i}>
+                      <a
+                        href={appPic.url}
+                        className="glightbox"
+                        data-glightbox="type: image"
+                      >
+                        <img src={appPic.url} alt="image" />
+                      </a>
+                    </div>
+                  ))}
+
+                  {/* {card?.more?.map((more, i) => (
                     <a
-                      href="https://resize.elle.fr/article/var/plain_site/storage/images/deco/reportages/visites-maisons/decouvrez-les-plus-beaux-appartements-du-monde/un-appartement-avec-piscine-a-rio-de-janeiro/90564826-1-fre-FR/Un-appartement-avec-piscine-a-Rio-de-Janeiro.jpg"
+                      key={i}
+                      href={more?.url}
                       className="glightbox"
                       data-glightbox="type: image"
                     >
-                      <img
-                        src="https://plan-a.ca/wp-content/uploads/2022/12/4800_paul_pouliot_30207_web-scaled.jpg"
-                        alt="image"
-                      />
+                      <img src={more?.url} alt="image" />
+                      <div className="transparent-box">
+                        <div className="caption">+3</div>
+                      </div>
                     </a>
-                  </div>
-                  <div className="img-box">
+                  ))} */}
+
+                  {/* <div className="img-box">
                     <a
                       href="https://media.admagazine.fr/photos/6396e766908aebe5490fae15/16:9/w_2560%2Cc_limit/2.jpg"
                       className="glightbox"
@@ -116,9 +127,9 @@ export default function Details() {
                         alt="image"
                       />
                     </a>
-                  </div>
+                  </div> */}
                   <div id="multi-link" className="img-box">
-                    <a
+                    {/* <a
                       href="https://media.admagazine.fr/photos/6396e76b05b5d166736411d5/master/w_1600%2Cc_limit/eba-haussmann-cusine-cachemire-tour-eiffel%2520(16).jpg"
                       className="glightbox"
                       data-glightbox="type: image"
@@ -130,11 +141,28 @@ export default function Details() {
                       <div className="transparent-box">
                         <div className="caption">+3</div>
                       </div>
-                    </a>
+                    </a> */}
+                    {card?.more?.map((more, i) => (
+                      <a
+                        key={i}
+                        href={more?.url}
+                        className="glightbox"
+                        data-glightbox="type: image"
+                      >
+                        <img
+                          src={more?.url}
+                          alt="image"
+                          style={{ display: "none" }}
+                        />
+                        <div className="transparent-box">
+                          <div className="caption">+{card?.more?.length}</div>
+                        </div>
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
-              <div
+              {/* <div
                 id="more-img"
                 className="extra-images-container hide-element"
               >
@@ -168,7 +196,7 @@ export default function Details() {
                     alt="image"
                   />
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="_inner_container">
@@ -257,7 +285,9 @@ export default function Details() {
                   </aside>
                   <div>
                     <section className="_small_title">Bedroom</section>
-                    <section className="_medium_title">{card.bedroom} rooms</section>
+                    <section className="_medium_title">
+                      {card.bedroom} rooms
+                    </section>
                   </div>
                   <aside>
                     <svg
@@ -312,15 +342,15 @@ export default function Details() {
                   </aside>
                   <div>
                     <section className="_small_title">bathroom</section>
-                    <section className="_medium_title">{card.bathroom} rooms</section>
+                    <section className="_medium_title">
+                      {card.bathroom} rooms
+                    </section>
                   </div>
                 </div>
               </div>
               <div className="d-flex flex-column mt-2">
                 <span className="_title p-0">description</span>
-                <span className="_description">
-                  {card.description}
-                </span>
+                <span className="_description">{card.description}</span>
               </div>
               <div className="d-flex flex-column mt-2">
                 <span className="_title p-0">calendar</span>
