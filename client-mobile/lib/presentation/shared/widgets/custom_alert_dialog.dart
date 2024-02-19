@@ -18,7 +18,13 @@ class CustomAlertDialog extends StatelessWidget {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
       child: AlertDialog(
-        content: Container(
+        content: Container(decoration: BoxDecoration(
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+        child:
+        
+        Container(
             decoration: BoxDecoration(
               gradient: const LinearGradient(
                 colors: [
@@ -30,7 +36,7 @@ class CustomAlertDialog extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(50.0),
             ),
-            child: content),
+            child: content),),
         backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50.0),
