@@ -11,18 +11,17 @@ export function httpAddAppartment(req, res) {
   } else {
     apartmentDb
       .findOne({})
-      .or([{ name: req.body.name }])
+      .or([{ apartmentName: req.body.apartmentName }])
       .then((exists) => {
         if (exists) {
-          res.status(409).json({ message: "Appartment exists already!" });
+          res.status(409).json({ message: "Apartment exists already!" });
         } else {
           const newAppartment = req.body;
-
-          // newAppartment.name = newAppartment.name.toLowerCase();
 
           if (req.file) {
             newAppartment.img = "../public/images/" + req.file.filename;
           }
+
           apartmentDb
             .create(newAppartment)
             .then((result) => {
@@ -38,11 +37,50 @@ export function httpAddAppartment(req, res) {
       .catch((err) => res.status(500).json({ error: err.message }));
   }
 }
+// export function httpAddAppartment(req, res) {
+//   if (!validationResult(req).isEmpty()) {
+//     res.status(400).json({ error: validationResult(req).array() });
+//   } else {
+//     apartmentDb
+//       .findOne({})
+//       .or([{ apartmentName: req.body.apartmentName }])
+//       .then((exists) => {
+//         if (exists) {
+//           res.status(409).json({ message: "Apartment already exists!" });
+//         } else {
+//           const newAppartment = req.body;
+
+//           if (req.files && req.files.length > 0) {
+//             newAppartment.pictures = req.files.map((file) => {
+//               return "../public/images/" + file.filename;
+//             });
+//           }
+//           apartmentDb
+//             .create(newAppartment)
+//             .then((result) => {
+//               findOneAppartByFilter(result._id)
+//                 .then((register) =>
+//                   res.status(201).json(appartFormat(register))
+//                 )
+//                 .catch((err) => res.status(500).json({ error: err.message }));
+//             })
+//             .catch((err) => res.status(500).json({ error: err.message }));
+//         }
+//       })
+//       .catch((err) => res.status(500).json({ error: err.message }));
+//   }
+// }
+
+
+
+
+
+
 //get all appartments
 export function httpGetAllApparts(req, res) {
   apartmentDb
     .find()
-    .populate("reviews")
+    // .populate("reviews")
     .then((apparts) => {
       res.status(200).json(appartsListFormat(apparts));
     })
@@ -125,7 +163,7 @@ export function httpUpdateOneAppartment(req, res) {
   } else {
     const newValues = req.body;
 
-    findOneAppartByFilter(req.params.param)
+    findOneAppartByFilter(req.params.id)
       .then((foundAppart) => {
         if (!foundAppart) {
           res.status(404).json({ message: "Appartment not found!" });
@@ -165,7 +203,7 @@ export async function removeApartmentFromOrders(apartmentId) {
 
 //delete one appartment with filter
 export function httpDeleteOneAppart(req, res) {
-  findOneAppartByFilter(req.params.param)
+  findOneAppartByFilter(req.params.id)
     .then((foundAppart) => {
       if (!foundAppart) {
         res.status(404).json({ error: "Appartment not found!" });
@@ -281,8 +319,8 @@ export async function findOneAppartByFilter(appartFilter) {
     .findOne({
       $or: [{ _id: appartId }, { name: appartFilter }],
     })
-    .populate("services")
-    .populate("reviews");
+    // .populate("services")
+    // .populate("reviews");
 }
 //appartment object format to get all appartments
 export function appartsListFormat(apparts) {
@@ -304,21 +342,41 @@ export function appartsIsWishlistedListFormat(apparts) {
 }
 
 //Appartment format
+// export function appartFormat(appartment) {
+//   return {
+//     id: appartment._id,
+//     name: appartment.name,
+//     description: appartment.description,
+//     pricePerNight: appartment.pricePerNight,
+//     bookedDates: appartment.bookedDates,
+//     location: appartment.location,
+//     rooms: appartment.rooms,
+//     reviews: appartment.reviews,
+//     services: appartment.services,
+//     img: appartment.img,
+//     rating: appartment.rating,
+//     sumOfRatings: appartment.sumOfRatings,
+//     numOfRatings: appartment.numOfRatings,
+//   };
+// }
+
 export function appartFormat(appartment) {
   return {
     id: appartment._id,
-    name: appartment.name,
+    apartmentName: appartment.apartmentName,
+    bathroom: appartment.bathroom,
+    bedroom: appartment.bedroom,
+    defaultDateAndPrice : appartment.defaultDateAndPrice,
     description: appartment.description,
-    pricePerNight: appartment.pricePerNight,
-    bookedDates: appartment.bookedDates,
+    food: appartment.food,
+    rent: appartment.rent,
+    id: appartment._id,
+    laundry: appartment.laundry,
     location: appartment.location,
-    rooms: appartment.rooms,
-    reviews: appartment.reviews,
-    services: appartment.services,
-    img: appartment.img,
-    rating: appartment.rating,
-    sumOfRatings: appartment.sumOfRatings,
-    numOfRatings: appartment.numOfRatings,
+    more: appartment.more,
+    parking: appartment.parking,
+    pictures: appartment.pictures,
+    specialDate: appartment.specialDate,
   };
 }
 

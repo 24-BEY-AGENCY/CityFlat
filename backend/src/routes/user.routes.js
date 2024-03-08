@@ -134,10 +134,12 @@ userRouter.route("/service/getAllServices").get(httpGetAllServices);
 userRouter
   .route("/reservations/getallmy")
   .get(ensureUser, httpGetMyReservations);
+
+userRouter.route("/orders/myorders").get(ensureUser, httpGetMyOrders);
 //admin get all reservations
 userRouter
   .route("/reservations/getallReservations")
-  .get(ensureAdmin, httpGetAllReservations);
+  .get(ensureAdmin, httpGetMyOrders);
 
 userRouter
   .route("/reservations/addReservation")
@@ -167,8 +169,8 @@ userRouter
 userRouter.route("/orders/Getall").get(ensureManager, httpGetAllOrders);
 userRouter.route("/orders/GetallUO").get(ensureUser, httpGetAllOrdersForUser);
 userRouter
-  .route("/order/accept/:param")
-  .post(ensureManager, httpAdminAcceptOrder);
+  .route("/order/accept/:id")
+  .post(ensureAdmin, httpAdminAcceptOrder);
 
 userRouter
   .route("/order/adminDecline/:param")

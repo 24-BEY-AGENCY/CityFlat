@@ -36,7 +36,10 @@ export function httpLoginUser(req, res) {
             } else {
               userDb
                 .findById(user._id)
-                .then((login) => res.status(200).json(addTokenToUser(login)))
+                .then((login) => {
+                  const formattedUser = userFormat(login); 
+                  res.status(200).json(addTokenToUser(formattedUser));
+                })
                 .catch((err) =>
                   res.status(500).json({
                     error: err.message,
@@ -49,6 +52,7 @@ export function httpLoginUser(req, res) {
     })
     .catch((err) => res.status(500).json({ error: err.message }));
 }
+
 
 export function httpRegisterUser(req, res) {
   if (!validationResult(req).isEmpty()) {
@@ -306,7 +310,7 @@ export async function findOneUserByFilter(userFilter) {
 function addTokenToUser(user) {
   const payload = {
     user: {
-      id: user._id,
+      id: user.id,
       email: user.email,
       role: user.role,
     },
@@ -314,10 +318,11 @@ function addTokenToUser(user) {
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
-  const loggedUser = userFormat(user);
+  const loggedUser = user;
   loggedUser.token = token;
   return loggedUser;
 }
+
 
 function emailFormat(email) {
   const emailLowerCase = email.toLowerCase();
@@ -350,7 +355,7 @@ export function userFormat(user) {
     id: user._id,
     name: user.name,
     email: user.email,
-    password: user.password,
+    // password: user.password,
     number: user.number,
     address: user.address,
     isVerified: user.isVerified,

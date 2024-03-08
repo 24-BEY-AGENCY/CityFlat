@@ -35,7 +35,7 @@ const stripe = new Stripe(process.env.SECRET_KEY, {
   apiVersion: "2020-08-27",
 });
 export async function httpGetMyReservations(req, res) {
-  console.log(req.user);
+ 
 
   try {
     const foundUser = await userDb.findOne(req.user);
@@ -66,7 +66,6 @@ export async function httpGetMyReservations(req, res) {
 }
 
 export function httpGetMyOrders(req, res) {
-  console.log(req.user);
   findOneUserByFilter(req.user.id)
     .then((foundUser) => {
       if (!foundUser) {
@@ -120,11 +119,11 @@ export function httpCreateOrder(req, res) {
     return res.status(400).json({ error: validationResult(req).array() });
   }
 
-  const user = req.user;
+  const userId = req.user.id;
   const newOrder = req.body;
-
+  console.log(userId);
   userDb
-    .findOne({ email: user.email })
+    .findById(userId)
     .then((foundUser) => {
       if (!foundUser) {
         return res.status(404).json({ message: "User not found!" });
@@ -144,15 +143,10 @@ export function httpCreateOrder(req, res) {
 
           // Call payment function to make payment
 
-          const serviceIds = newOrder.services;
-
-          const services = await serviceDb.find({
-            _id: { $in: serviceIds }, // Find all services with IDs in the serviceIds array
-          });
-
-          console.log("services found : " + services);
-
-          newOrder.services = services;
+          newOrder.services = newOrder.services.map((service) => ({
+            name: service.name,
+            price: service.price, // Assuming the price is already included in the service object
+          }));
 
           orderDb
             .create(newOrder)
@@ -533,7 +527,7 @@ export function httpAdminDeclineOrder(req, res) {
 }
 
 export function httpAdminAcceptOrder(req, res) {
-  findOneOrderByFilter(req.params.param)
+  findOneOrderByFilter(req.params.id)
     .then((foundOrder) => {
       if (!foundOrder) {
         return res.status(404).json({ message: "Order not found!" });
@@ -614,12 +608,12 @@ export async function httpGetAllOrdersForUser(req, res) {
 
     const orders = await orderDb
       .find({ User: userId })
-      .populate({
-        path: "appartment",
-        populate: { path: "services", model: "Service" },
-      })
-      .populate("User")
-      .populate("services");
+      // .populate({
+      //   path: "appartment",
+      //   populate: { path: "services", model: "Service" },
+      // })
+      .populate("User");
+    // .populate("services");
 
     if (!orders || orders.length === 0) {
       return res.status(404).json({ error: "No orders found for this user!" });
@@ -676,9 +670,9 @@ function orderFormat(Order) {
 
     description: Order.description,
     totalPrice: Order.totalPrice,
-    checkIn: Order.checkIn,
-    checkOut: Order.checkOut,
-
+    startDate: Order.startDate,
+    endDate: Order.endDate,
+    totalPrice: Order.totalPrice,
     servicesFee: Order.servicesFee,
     nightsFee: Order.nightsFee,
     isPaied: Order.isPaied,

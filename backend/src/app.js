@@ -7,6 +7,8 @@ import passport from "passport";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 
+import { v2 as cloudinary } from "cloudinary";
+
 import bodyParser from "body-parser";
 
 import morgan from "morgan";
@@ -20,7 +22,6 @@ import { searchRouter } from "./routes/search.routes.js";
 import startNotificationCleanup from "./utils/notificationCleanup.js";
 import bookedDatesCleanup from "./utils/bookedDatesCleanup.js";
 
-import cloudinary from "cloudinary";
 
 import dotenv from "dotenv";
 
@@ -63,11 +64,13 @@ app.get("/signature", (req, res) => {
   });
 });
 
-cloudinary.v2.config({
-  cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.REACT_APP_CLOUDINARY_KEY,
-  api_secret: process.env.REACT_APP_CLOUDINARY_SECRET,
+
+cloudinary.config({
+  cloud_name: "dlspkc0so",
+  api_key: "637565689383198",
+  api_secret: "ITopDMYBPJ1dkSKFxdqWkgdfG5Q",
 });
+
 
 app.delete("/delete-from-cloudinary/:filename", async (req, res) => {
   const prefix = `CityFlat-assets/profile_imgs/${req.params.filename}`;
@@ -79,7 +82,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/img", express.static("public/images"));
 
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(
   session({

@@ -2,48 +2,71 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 import { STATE } from "../models/reservation.enums.js";
 
-const OrdernSchema = new Schema({
-  
-    User:{ type: Schema.Types.ObjectId, ref: 'User' },
-    appartment:{ type: Schema.Types.ObjectId, ref: 'Appartment'},
-    
-    description: { type: String, required: false},
-   
-    totalPrice: {
-        type: Number,
-        required: false
-    },
+// const OrdernSchema = new Schema({
 
-    checkIn: { type: Date,required: true },
-    checkOut: { type: Date, required: true},
-   
-    servicesFee: {
-        type: Number,
-        required: true
-    },
-    nightsFee: {
-        type: Number,
-        required: true
-    },
-    
-    isPaied:{
-        type:Boolean,
-        default:false,
-    },
-  
-  
-    services: [{ type: Schema.Types.ObjectId, ref: 'Service', required: false, }],
-  
-    state: {
-        type: String,
-        enum: [STATE.PENDING, STATE.ACCEPTED,STATE.DECLINED],
-        default: STATE.PENDING,
+//     User:{ type: Schema.Types.ObjectId, ref: 'User' },
+//     appartment:{ type: Schema.Types.ObjectId, ref: 'Appartment'},
+
+//     description: { type: String, required: false},
+
+//     totalPrice: {
+//         type: Number,
+//         required: false
+//     },
+
+//     checkIn: { type: Date,required: true },
+//     checkOut: { type: Date, required: true},
+
+//     servicesFee: {
+//         type: Number,
+//         required: true
+//     },
+//     nightsFee: {
+//         type: Number,
+//         required: true
+//     },
+
+//     isPaied:{
+//         type:Boolean,
+//         default:false,
+//     },
+
+//     services: [{ type: Schema.Types.ObjectId, ref: 'Service', required: false, }],
+
+//     state: {
+//         type: String,
+//         enum: [STATE.PENDING, STATE.ACCEPTED,STATE.DECLINED],
+//         default: STATE.PENDING,
+//       },
+
+// },
+// { timestamps: true }
+// );
+
+const OrdernSchema = new Schema(
+  {
+    User: { type: Schema.Types.ObjectId, ref: "User" },
+    appartment: { type: Schema.Types.ObjectId, ref: "Appartment" },
+    description: { type: String, required: false },
+    totalPrice: { type: Number, required: false },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
+    servicesFee: { type: Number, required: true },
+    nightsFee: { type: Number, required: false },
+    isPaied: { type: Boolean, default: false },
+    services: [
+      {
+        name: String,
+        price: Number,
       },
-    
-},
-{ timestamps: true }
+    ],
+    state: {
+      type: String,
+      enum: [STATE.PENDING, STATE.ACCEPTED, STATE.DECLINED],
+      default: STATE.PENDING,
+    },
+  },
+  { timestamps: true }
 );
-
-
 
 export default model("Order", OrdernSchema);

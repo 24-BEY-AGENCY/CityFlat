@@ -23,12 +23,19 @@ import { ensureUser } from "../middlewares/authorization-handler.js";
 const appartmentRouter = express.Router();
 
 appartmentRouter
+  .route("/addapartment")
+  .post(httpAddAppartment)
+
+appartmentRouter.route("/edit/:id").put(httpUpdateOneAppartment);
+
+appartmentRouter
   .route("/reviews/:param")
   .post(ensureUser, createReview)
   .get(getAllReviews)
   .delete(ensureUser, deleteReview);
 
 appartmentRouter.route("/updateReviews/:param").put(ensureUser, updateReview);
+appartmentRouter.route("/:id/delete").delete(httpDeleteOneAppart);
 appartmentRouter.route("/getAllAppart").get(httpGetAllApparts);
 appartmentRouter
   .route("/getAllAppartWishlisted")
