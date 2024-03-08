@@ -21,6 +21,7 @@ export default function AppartementsContent() {
     bathroom: 0,
     parking: "",
     food: "",
+    laundry: "",
     pictures: [],
     description: "",
   });
@@ -39,6 +40,7 @@ export default function AppartementsContent() {
         bathroom: 0,
         parking: "",
         food: "",
+        laundry: "",
         pictures: [],
         description: "",
       });
@@ -173,6 +175,7 @@ export default function AppartementsContent() {
       bathroom: 0,
       parking: "",
       food: "",
+      laundry: "",
       pictures: [],
       description: "",
     });
@@ -533,12 +536,12 @@ export default function AppartementsContent() {
                       x=".5"
                       y=".5"
                       fill="#FFF"
-                      stroke="#006F94"
+                      stroke="#0DB254"
                       rx="3"
                     />
                     <path
                       class="tick"
-                      stroke="#6EA340"
+                      stroke="#0DB254"
                       fill="none"
                       stroke-linecap="round"
                       stroke-width="4"
@@ -583,7 +586,7 @@ export default function AppartementsContent() {
                       x=".5"
                       y=".5"
                       fill="#FFF"
-                      stroke="#006F94"
+                      stroke="#0DB254"
                       rx="3"
                     />
                     <path
@@ -598,15 +601,88 @@ export default function AppartementsContent() {
                   <span class="checkbox__label">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-cup-straw"
-                      viewBox="0 0 16 16"
+                      viewBox="0 0 256 256"
                     >
-                      <path d="M13.902.334a.5.5 0 0 1-.28.65l-2.254.902-.4 1.927c.376.095.715.215.972.367.228.135.56.396.56.82q0 .069-.011.132l-.962 9.068a1.28 1.28 0 0 1-.524.93c-.488.34-1.494.87-3.01.87s-2.522-.53-3.01-.87a1.28 1.28 0 0 1-.524-.93L3.51 5.132A1 1 0 0 1 3.5 5c0-.424.332-.685.56-.82.262-.154.607-.276.99-.372C5.824 3.614 6.867 3.5 8 3.5c.712 0 1.389.045 1.985.127l.464-2.215a.5.5 0 0 1 .303-.356l2.5-1a.5.5 0 0 1 .65.278M9.768 4.607A14 14 0 0 0 8 4.5c-1.076 0-2.033.11-2.707.278A3.3 3.3 0 0 0 4.645 5c.146.073.362.15.648.222C5.967 5.39 6.924 5.5 8 5.5c.571 0 1.109-.03 1.588-.085zm.292 1.756C9.445 6.45 8.742 6.5 8 6.5c-1.133 0-2.176-.114-2.95-.308a6 6 0 0 1-.435-.127l.838 8.03c.013.121.06.186.102.215.357.249 1.168.69 2.438.69s2.081-.441 2.438-.69c.042-.029.09-.094.102-.215l.852-8.03a6 6 0 0 1-.435.127 9 9 0 0 1-.89.17zM4.467 4.884s.003.002.005.006zm7.066 0-.005.006zM11.354 5a3 3 0 0 0-.604-.21l-.099.445.055-.013c.286-.072.502-.149.648-.222" />
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M36.4,98.1a16.3,16.3,0,0,1-3.2-13.5C40.5,49.5,80.4,24,128,24s87.5,25.5,94.8,60.6A16,16,0,0,1,207.2,104H48.8A16.2,16.2,0,0,1,36.4,98.1ZM225,152.6l-20.1,8h0L188,167.4l-37-14.8a7.8,7.8,0,0,0-6,0l-37,14.8L71,152.6a7.8,7.8,0,0,0-6,0l-20.1,8h0l-19.9,8A8,8,0,0,0,28,184a8,8,0,0,0,3-.6l9-3.6V184a40,40,0,0,0,40,40h96a40,40,0,0,0,40-40V173.4l15-6a8,8,0,0,0-6-14.8Zm7-32.6H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16Z"
+                        fill="#adadad"
+                      ></path>
                     </svg>
-                    <span>food</span>
+                    <span>Food</span>
+                  </span>
+                </label>
+              </div>
+              <div className="__services col-5 col-md-3">
+                <label for="myCheckbox_3" class="checkbox">
+                  <input
+                    class="checkbox__input"
+                    type="checkbox"
+                    id="myCheckbox_3"
+                    checked={formData.laundry}
+                    onChange={() =>
+                      setFormData({ ...formData, laundry: !formData.laundry })
+                    }
+                  />
+                  <svg
+                    class="checkbox__icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 22 22"
+                  >
+                    <rect
+                      width="21"
+                      height="21"
+                      x=".5"
+                      y=".5"
+                      fill="#FFF"
+                      stroke="#0DB254"
+                      rx="3"
+                    />
+                    <path
+                      class="tick"
+                      stroke="#0DB254"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-width="4"
+                      d="M4 10l5 5 9-9"
+                    />
+                  </svg>
+                  <span class="checkbox__label">
+                    <svg
+                      width="24"
+                      height="24"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {" "}
+                      <path
+                        d="M20.9999 3.99999L21 20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V4C3 2.89543 3.89543 2 5 2H18.9999C20.1045 2 20.9999 2.89543 20.9999 3.99999Z"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />{" "}
+                      <path
+                        d="M18 5.01L18.01 4.99889"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />{" "}
+                      <path
+                        d="M12 19C15.3137 19 18 16.3137 18 13C18 9.68629 15.3137 7 12 7C8.68629 7 6 9.68629 6 13C6 16.3137 8.68629 19 12 19Z"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />{" "}
+                      <path
+                        d="M12 16C10.3431 16 9 14.6569 9 13"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />{" "}
+                    </svg>
+                    <span>Laundry</span>
                   </span>
                 </label>
               </div>

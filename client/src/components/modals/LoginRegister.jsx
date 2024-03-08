@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginRegister({ setShow }) {
   const navigate = useNavigate();
+  const admin = JSON.parse(localStorage.getItem("user"));
   const { user, isLoading, isAuthenticated } = useSelector(
     (state) => state.auth
   );
@@ -26,7 +27,11 @@ export default function LoginRegister({ setShow }) {
   const handleSubmit = (values) => {
     dispatch(loginUser(values));
     setShow(false);
-    navigate("/profil");
+    if (admin?.role === "admin") {
+      navigate("/dashboard");
+    } else {
+      navigate("/dashboard");
+    }
   };
   return (
     <div className="modal_container" id="container">

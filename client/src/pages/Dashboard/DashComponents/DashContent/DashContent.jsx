@@ -20,8 +20,8 @@ export default function DashContent() {
                     <div className="_date mb-1">
                       Earnings <small>(Annual)</small>
                     </div>
-                    <div className="_number mt-3">$84,326</div>
-                    <div className="_gold_text ">$84,326</div>
+                    <div className="_number mt-3">$0,000</div>
+                    <div className="_gold_text ">$0,000</div>
                   </div>
                   <div className="col-4 mr-2">
                     <div className="svg_ctr text-xs font-weight-bold text-muted text-uppercase mb-1">
@@ -97,8 +97,8 @@ export default function DashContent() {
                     <div className="_date mb-1">
                       Earnings <small>(Annual)</small>
                     </div>
-                    <div className="_number mt-3">$84,326</div>
-                    <div className="_gold_text ">$84,326</div>
+                    <div className="_number mt-3">$0,000</div>
+                    <div className="_gold_text ">$0,000</div>
                   </div>
                   <div className="col-4 mr-2">
                     <div className="svg_ctr text-xs font-weight-bold text-muted text-uppercase mb-1">
@@ -150,8 +150,8 @@ export default function DashContent() {
                     <div className="_date mb-1">
                       Earnings <small>(Annual)</small>
                     </div>
-                    <div className="_number mt-3">$84,326</div>
-                    <div className="_gold_text ">$84,326</div>
+                    <div className="_number mt-3">$0,000</div>
+                    <div className="_gold_text ">$0,000</div>
                   </div>
                   <div className="col-4 mr-2">
                     <div className="svg_ctr text-xs font-weight-bold text-muted text-uppercase mb-1">

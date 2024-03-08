@@ -254,7 +254,13 @@
 .img-thumbs-hidden {
   display: none;
 }
-
+.__services .checkbox__label{
+  height: 80px;
+  width: 80px;
+}
+.__services .checkbox__label svg {
+  width: 25px;
+}
 .wrapper-thumb {
   position: relative;
   display: inline-block;
