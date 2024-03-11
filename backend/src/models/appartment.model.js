@@ -165,6 +165,23 @@ const AppartmentSchema = new Schema(
         message: "Description should be at least 10 characters long",
       },
     },
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review", required: false }],
+
+    sumOfRatings: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    numOfRatings: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    rating: {
+      type: Number,
+      required: false,
+      default: 5,
+    },
   },
   { timestamps: true }
 );

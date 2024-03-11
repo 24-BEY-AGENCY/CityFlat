@@ -71,11 +71,6 @@ export function httpAddAppartment(req, res) {
 //   }
 // }
 
-
-
-
-
-
 //get all appartments
 export function httpGetAllApparts(req, res) {
   apartmentDb
@@ -315,12 +310,11 @@ export async function findOneAppartByFilter(appartFilter) {
   if (mongoose.Types.ObjectId.isValid(appartFilter)) {
     appartId = appartFilter;
   }
-  return await apartmentDb
-    .findOne({
-      $or: [{ _id: appartId }, { name: appartFilter }],
-    })
-    // .populate("services")
-    // .populate("reviews");
+  return await apartmentDb.findOne({
+    $or: [{ _id: appartId }, { name: appartFilter }],
+  });
+  // .populate("services")
+  // .populate("reviews");
 }
 //appartment object format to get all appartments
 export function appartsListFormat(apparts) {
@@ -366,7 +360,7 @@ export function appartFormat(appartment) {
     apartmentName: appartment.apartmentName,
     bathroom: appartment.bathroom,
     bedroom: appartment.bedroom,
-    defaultDateAndPrice : appartment.defaultDateAndPrice,
+    defaultDateAndPrice: appartment.defaultDateAndPrice,
     description: appartment.description,
     food: appartment.food,
     rent: appartment.rent,
@@ -377,23 +371,36 @@ export function appartFormat(appartment) {
     parking: appartment.parking,
     pictures: appartment.pictures,
     specialDate: appartment.specialDate,
+    reviews: appartment.reviews,
+    rating: appartment.rating,
+    sumOfRatings: appartment.sumOfRatings,
+    numOfRatings: appartment.numOfRatings,
+    isWishlist: appartment.isWishlist,
+    // bookedDates: appartment.bookedDates,
   };
 }
 
 //Appartment with wishlist property format
 export function appartWishlistFormat(appartment) {
   return {
-    id: appartment._id,
-    name: appartment.name,
-    description: appartment.description,
+    _id: appartment._id,
+    apartmentName: appartment.apartmentName,
+    bathroom: appartment.bathroom,
+    bedroom: appartment.bedroom,
+    defaultDateAndPrice: appartment.defaultDateAndPrice,
     defaultPrice: appartment.defaultPrice,
-    pricePerNight: appartment.pricePerNight,
     bookedDates: appartment.bookedDates,
+
+    description: appartment.description,
+    food: appartment.food,
+    rent: appartment.rent,
+    laundry: appartment.laundry,
     location: appartment.location,
-    rooms: appartment.rooms,
+    more: appartment.more,
+    parking: appartment.parking,
+    pictures: appartment.pictures,
+    specialDate: appartment.specialDate,
     reviews: appartment.reviews,
-    services: appartment.services,
-    img: appartment.img,
     rating: appartment.rating,
     sumOfRatings: appartment.sumOfRatings,
     numOfRatings: appartment.numOfRatings,
