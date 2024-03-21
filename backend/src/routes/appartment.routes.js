@@ -22,9 +22,7 @@ import { ensureUser } from "../middlewares/authorization-handler.js";
 /** Defining the router */
 const appartmentRouter = express.Router();
 
-appartmentRouter
-  .route("/addapartment")
-  .post(httpAddAppartment)
+appartmentRouter.route("/addapartment").post(httpAddAppartment);
 
 appartmentRouter.route("/edit/:id").put(httpUpdateOneAppartment);
 
@@ -41,7 +39,7 @@ appartmentRouter
   .route("/getAllAppartWishlisted")
   .get(ensureUser, httpGetAllAppartsWishlisted);
 appartmentRouter
-  .route(":id/httpGetOneAppartmentWishlist")
+  .route("/:id/httpGetOneAppartmentWishlist")
   .get(ensureUser, httpGetOneAppartmentWishlist);
 
 export { appartmentRouter };

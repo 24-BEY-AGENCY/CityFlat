@@ -126,8 +126,7 @@ export function httpGetOneAppartment(req, res) {
 //get one appartment with wishlist property
 export function httpGetOneAppartmentWishlist(req, res) {
   const userId = req.user.id;
-
-  findOneAppartByFilter(req.params.param)
+  findOneAppartByFilter(req.params.id)
     .then((foundAppart) => {
       if (!foundAppart) {
         res.status(404).json({ message: "Appartment not found!" });
@@ -310,9 +309,7 @@ export async function findOneAppartByFilter(appartFilter) {
   if (mongoose.Types.ObjectId.isValid(appartFilter)) {
     appartId = appartFilter;
   }
-  return await apartmentDb.findOne({
-    $or: [{ _id: appartId }, { name: appartFilter }],
-  });
+  return await apartmentDb.findOne({ _id: appartId });
   // .populate("services")
   // .populate("reviews");
 }

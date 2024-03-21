@@ -35,8 +35,6 @@ const stripe = new Stripe(process.env.SECRET_KEY, {
   apiVersion: "2020-08-27",
 });
 export async function httpGetMyReservations(req, res) {
- 
-
   try {
     const foundUser = await userDb.findOne(req.user);
     if (!foundUser) {
@@ -578,8 +576,8 @@ export async function getAcceptedBookings(req, res) {
     res.status(404).json({ error: "No accepted orders !" });
   } else {
     const bookedDates = acceptedOrders.map((order) => {
-      const { checkIn, checkOut } = order;
-      return { start: checkIn, end: checkOut };
+      const { startDate, endDate } = order;
+      return { start: startDate, end: endDate };
     });
 
     res.status(200).json(bookedDates);
