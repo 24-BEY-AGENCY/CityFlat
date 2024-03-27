@@ -122,16 +122,20 @@ export async function deleteReview(req, res) {
 
 export async function getAllReviews(req, res) {
   try {
-    const appartment = await Appartment.findById(req.params.param)
-      .populate("reviews")
-      .then((apart) => {
-        res.status(200).json(apart.reviews);
-      })
-      .catch((err) => {
-        res.status(500).json({ message: err.message });
-      });
+    const apartment = await Appartment.findById(req.params.param)
+      .populate({ path: "reviews", populate: { path: "User", select: "img" } })
+      .lean();
+    const reviews = apartment.reviews.map((review) => {
+      return {
+        ...review,
+        User: review.User._id,
+        img: review.User.img,
+      };
+    });
+
+    res.status(200).json(reviews);
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to get reviews.");
+    res.status(500).json({ message: error.message });
   }
 }

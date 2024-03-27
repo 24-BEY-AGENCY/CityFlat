@@ -679,6 +679,7 @@ function orderFormat(Order) {
     User: Order.User,
     appartment: Order.appartment,
     transactionId: Order.transactionId,
+    updatedAt: Order.updatedAt,
   };
 }
 

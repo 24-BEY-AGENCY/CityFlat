@@ -37,7 +37,7 @@ export function httpLoginUser(req, res) {
               userDb
                 .findById(user._id)
                 .then((login) => {
-                  const formattedUser = userFormat(login); 
+                  const formattedUser = userFormat(login);
                   res.status(200).json(addTokenToUser(formattedUser));
                 })
                 .catch((err) =>
@@ -52,7 +52,6 @@ export function httpLoginUser(req, res) {
     })
     .catch((err) => res.status(500).json({ error: err.message }));
 }
-
 
 export function httpRegisterUser(req, res) {
   if (!validationResult(req).isEmpty()) {
@@ -138,6 +137,10 @@ export function httpUpdateOneUser(req, res) {
           res.status(404).json({ message: "User not found!" });
         } else {
           newValues.isBanned = foundUser.isBanned;
+
+          if (req.file) {
+            newValues.img = "../public/images/" + req.file.filename;
+          }
           userDb
             .findByIdAndUpdate(foundUser._id, newValues)
             .then((result) => {
@@ -322,7 +325,6 @@ function addTokenToUser(user) {
   loggedUser.token = token;
   return loggedUser;
 }
-
 
 function emailFormat(email) {
   const emailLowerCase = email.toLowerCase();

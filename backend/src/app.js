@@ -10,6 +10,8 @@ import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 
 import bodyParser from "body-parser";
+import { fileURLToPath } from "url";
+import path from "path";
 
 import morgan from "morgan";
 /* Imports from project modules */
@@ -21,7 +23,6 @@ import { HelpRouter } from "./routes/help.routes.js";
 import { searchRouter } from "./routes/search.routes.js";
 import startNotificationCleanup from "./utils/notificationCleanup.js";
 import bookedDatesCleanup from "./utils/bookedDatesCleanup.js";
-
 
 import dotenv from "dotenv";
 
@@ -64,13 +65,11 @@ app.get("/signature", (req, res) => {
   });
 });
 
-
 cloudinary.config({
   cloud_name: "dlspkc0so",
   api_key: "637565689383198",
   api_secret: "ITopDMYBPJ1dkSKFxdqWkgdfG5Q",
 });
-
 
 app.delete("/delete-from-cloudinary/:filename", async (req, res) => {
   const prefix = `CityFlat-assets/profile_imgs/${req.params.filename}`;
@@ -97,6 +96,13 @@ app.use(
 );
 
 // hello
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(
+  "/public/images",
+  express.static(path.join(__dirname, "public/images"))
+);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

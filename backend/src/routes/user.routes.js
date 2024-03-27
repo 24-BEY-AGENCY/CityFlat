@@ -85,7 +85,7 @@ userRouter.route("/login").post(validateLogin, httpLoginUser);
 userRouter
   .route("/:param")
   .get(httpGetOneUser)
-  .put(ensureUser, httpUpdateOneUser)
+  .put(ensureUser, multer("img", 512 * 1024), httpUpdateOneUser)
   .delete(ensureUser, httpDeleteOneUser);
 
 userRouter.route("/").get(httpGetAllUsers);
@@ -168,9 +168,7 @@ userRouter
 
 userRouter.route("/orders/Getall").get(ensureManager, httpGetAllOrders);
 userRouter.route("/orders/GetallUO").get(ensureUser, httpGetAllOrdersForUser);
-userRouter
-  .route("/order/accept/:id")
-  .post(ensureAdmin, httpAdminAcceptOrder);
+userRouter.route("/order/accept/:id").post(ensureAdmin, httpAdminAcceptOrder);
 
 userRouter
   .route("/order/adminDecline/:param")
