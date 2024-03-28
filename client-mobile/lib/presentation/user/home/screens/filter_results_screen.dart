@@ -50,14 +50,16 @@ class _FilterResultsScreenState extends State<FilterResultsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     final onePercentOfHeight = SizeConfig.heightMultiplier;
 
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (bool didPop) async {
+        if (didPop) {
+          return;
+        }
         Navigator.pop(context);
         Navigator.pop(context);
-        return true;
       },
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
@@ -132,6 +134,7 @@ class _FilterResultsScreenState extends State<FilterResultsScreen> {
                                         itemCount: snapshot.data!.length,
                                         itemBuilder: (context, index) {
                                           return ApartmentCard(
+                                              key: UniqueKey(),
                                               apartmentData:
                                                   snapshot.data![index],
                                               index: index);

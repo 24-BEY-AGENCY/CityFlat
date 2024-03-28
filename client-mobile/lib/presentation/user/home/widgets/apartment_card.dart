@@ -1,6 +1,7 @@
 import 'package:cityflat/presentation/shared/widgets/custom_icons.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../models/apartment_model.dart';
@@ -11,17 +12,25 @@ import '../../apartment/screens/one_apartment_screen.dart';
 class ApartmentCard extends StatefulWidget {
   final Apartment? apartmentData;
   final int? index;
-  const ApartmentCard({super.key, this.apartmentData, this.index});
+  final Key? key;
+
+  const ApartmentCard({
+    this.apartmentData,
+    this.index,
+    this.key,
+  });
 
   @override
   State<ApartmentCard> createState() => _ApartmentCardState();
 }
 
 class _ApartmentCardState extends State<ApartmentCard> {
+  bool isLoading = false;
+  bool? isFavorite;
+
   Future<void> onAddToWishlist(String apartmentId) async {
     try {
-      final response = await WishlistService().addToWishlist(apartmentId);
-      print(response);
+      await WishlistService().addToWishlist(apartmentId);
     } catch (error) {
       print(error);
     }
@@ -45,13 +54,14 @@ class _ApartmentCardState extends State<ApartmentCard> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
     final apartmentProvider =
         Provider.of<ApartmentProvider>(context, listen: true);
 
     return GestureDetector(
+      key: widget.key,
       onTap: () {
-        visitApartmentScreen(apartmentProvider.apartments[widget.index!].id!);
+        visitApartmentScreen(widget.apartmentData!.id!);
       },
       child: Stack(
         children: [
@@ -73,7 +83,7 @@ class _ApartmentCardState extends State<ApartmentCard> {
               ],
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(widget.apartmentData!.img![0]),
+                image: NetworkImage(widget.apartmentData!.pictures![0]),
               ),
             ),
           ),
@@ -102,66 +112,113 @@ class _ApartmentCardState extends State<ApartmentCard> {
               children: [
                 Align(
                   alignment: Alignment.topRight,
-                  child: Container(
-                    // margin: EdgeInsets.only(top: 10.0, right: 10.0),
-                    height: 35.0,
-                    width: 35.0,
-                    decoration: ShapeDecoration(
-                      color: const Color.fromRGBO(255, 255, 255, 0.2),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                    ),
-                    child: Stack(
-                      children: [
-                        Center(
-                          child: Container(
-                            height: 25.0,
-                            width: 25.0,
-                            decoration: ShapeDecoration(
-                              color: const Color.fromRGBO(255, 255, 255, 0.2),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0),
-                              ),
+                  child: isLoading
+                      ? Container(
+                          height: 25,
+                          width: 25,
+                          margin: const EdgeInsets.only(right: 3.0, top: 2.0),
+                          child: const CircularProgressIndicator(
+                            strokeWidth: 2.0,
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                          ))
+                      : Container(
+                          height: 35.0,
+                          width: 35.0,
+                          decoration: ShapeDecoration(
+                            color: const Color.fromRGBO(255, 255, 255, 0.2),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50.0),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 35.0,
-                          width: 20.0,
-                          child: IconButton(
-                              padding: const EdgeInsets.all(10.0),
-                              splashColor: Colors.transparent,
-                              icon: Icon(
-                                CustomIcons.favorite,
-                                size: 13 * curScaleFactor,
-                                color: apartmentProvider
-                                        .apartments[widget.index!].isWishlist!
-                                    ? const Color.fromRGBO(13, 178, 84, 1)
-                                    : const Color.fromRGBO(255, 255, 255, 1),
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Container(
+                                  height: 25.0,
+                                  width: 25.0,
+                                  decoration: ShapeDecoration(
+                                    color: const Color.fromRGBO(
+                                        255, 255, 255, 0.2),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              onPressed: () async {
-                                final apartmentId = apartmentProvider
-                                    .apartments[widget.index!].id!;
-                                if (apartmentProvider
-                                    .apartments[widget.index!].isWishlist!) {
-                                  await onRemoveFromWishlist(apartmentId);
-                                } else {
-                                  await onAddToWishlist(apartmentId);
-                                }
+                              Container(
+                                height: 35.0,
+                                width: 35.0,
+                                margin: const EdgeInsets.only(right: 5.0),
+                              ),
+                              IconButton(
+                                  padding: const EdgeInsets.all(10.0),
+                                  splashColor: Colors.transparent,
+                                  icon: isFavorite ??
+                                          widget.apartmentData!.isWishlist!
+                                      ? SvgPicture.asset(
+                                          "assets/icons/svg/favorite_filled.svg",
+                                          width: 50,
+                                          height: 50,
+                                          // fit: BoxFit.fitWidth,
+                                          fit: BoxFit.fitWidth,
+                                          color: const Color.fromRGBO(
+                                              13, 178, 84, 1),
+                                        )
+                                      : Container(
+                                          margin:
+                                              const EdgeInsets.only(right: 5.0),
+                                          child: Icon(
+                                            CustomIcons.favorite,
+                                            size: 13 * curScaleFactor,
+                                            color: const Color.fromRGBO(
+                                                255, 255, 255, 1),
+                                          ),
+                                        ),
+                                  onPressed: () async {
+                                    final apartmentId =
+                                        widget.apartmentData!.id!;
+                                    bool isWishisted = apartmentProvider
+                                            .apartments
+                                            .firstWhere((apart) =>
+                                                apart.id == apartmentId)
+                                            .isWishlist ??
+                                        false;
+                                    if (isWishisted) {
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      await onRemoveFromWishlist(apartmentId);
 
-                                setState(() {
-                                  apartmentProvider.switchWishList(apartmentId);
-                                });
-                              }),
+                                      setState(() {
+                                        isLoading = false;
+                                        isFavorite = false;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      await onAddToWishlist(apartmentId);
+
+                                      setState(() {
+                                        isLoading = false;
+                                        isFavorite = true;
+                                      });
+                                    }
+
+                                    setState(() {
+                                      apartmentProvider
+                                          .switchWishList(apartmentId);
+                                      apartmentProvider
+                                          .switchFavoriteWishList(apartmentId);
+                                    });
+                                  }),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ),
                 ),
                 const Spacer(),
                 Text(
-                  widget.apartmentData!.name!,
+                  widget.apartmentData!.apartmentName!,
                   style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 16.0 * curScaleFactor,
@@ -180,7 +237,6 @@ class _ApartmentCardState extends State<ApartmentCard> {
                         size: 10.0,
                       ),
                       Expanded(
-                        // Wrap with Expanded
                         child: Text(
                           widget.apartmentData!.location!,
                           style: TextStyle(
@@ -199,10 +255,11 @@ class _ApartmentCardState extends State<ApartmentCard> {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: '${widget.apartmentData!.defaultPrice!} €',
+                        text:
+                            '${widget.apartmentData!.defaultDateAndPrice!.price} €',
                         style: TextStyle(
                           fontFamily: 'TT Commons',
-                          fontSize: 19.0 * curScaleFactor,
+                          fontSize: 20.5 * curScaleFactor,
                           fontWeight: FontWeight.w700,
                           color: const Color.fromRGBO(13, 178, 84, 1),
                           overflow: TextOverflow.ellipsis,

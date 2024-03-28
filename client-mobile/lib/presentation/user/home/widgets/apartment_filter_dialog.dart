@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/apartment_provider.dart';
-import '../../../../utilities/size_config.dart';
 import '../../../shared/widgets/custom_alert_dialog.dart';
 import '../../../shared/widgets/custom_light_elevated_button.dart';
 import '../../../shared/widgets/custom_light_neumorphic_elevated_button.dart';
@@ -20,7 +19,7 @@ class ApartmentFilterDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
     final apartmentProvider =
         Provider.of<ApartmentProvider>(context, listen: true);
     rangeValues = RangeValues(apartmentProvider.filterValues["min"]!,
@@ -121,9 +120,6 @@ class ApartmentFilterDialog extends StatelessWidget {
                       ]),
                   textColor: const Color.fromRGBO(255, 255, 255, 1),
                   onPressed: () async {
-                    // Future<List<Apartment>?>? filterResults =
-                    //     onfilterApartmentByPriceRange();
-
                     Navigator.of(context).pushNamed(
                         FilterResultsScreen.routeName,
                         arguments: {"rangeValues": rangeValues});

@@ -1,17 +1,21 @@
 import 'package:cityflat/presentation/user/home/widgets/apartment_filter_dialog.dart';
 import 'package:cityflat/presentation/user/home/widgets/home_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+
 import '../../../../models/apartment_model.dart';
 import '../../../../providers/apartment_provider.dart';
-import '../../../../providers/user_provider.dart';
+import '../../../../providers/token_provider.dart';
 import '../../../../services/apartment_service.dart';
 import '../../../../services/connectivity_service.dart';
 import '../../../../services/wishlist_service.dart';
 import '../../../../utilities/size_config.dart';
+import '../../../authentication/screens/login/login_screen.dart';
 import '../../../shared/widgets/custom_icon_button.dart';
 import '../../../shared/widgets/custom_icons.dart';
 import '../../../shared/widgets/custom_light_textformfield.dart';
+import '../../../shared/widgets/custom_toast.dart';
 import '../widgets/apartment_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,19 +27,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Future<User>? userFuture;
+  FToast? fToast;
   Future<List<Apartment>>? apartmentListFuture;
-  bool userFetched = false;
   double min = 0;
   double max = 5000;
 
   Future<void> onGetApartmentList() async {
     try {
       final response = ApartmentService().getAllAppartWishlisted();
+      print(response);
       apartmentListFuture = response;
     } catch (error) {
       print(error);
     }
+  }
+
+  Future<void> logout() async {
+    final tokenProvider = Provider.of<TokenProvider>(context, listen: false);
+    await tokenProvider.clearSecureStorage();
+    if (!mounted) return;
+    Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
   }
 
   Future<void> _refreshData() async {
@@ -63,15 +74,56 @@ class _HomeScreenState extends State<HomeScreen> {
       final response = await WishlistService().addToWishlist(apartmentId);
       print(response);
     } catch (error) {
-      print(error);
+      _errorToast();
     }
+  }
+
+  void _showLogoutToast() {
+    Future.delayed(Duration.zero, () {
+      fToast!.showToast(
+        child: const CustomToast(
+          text: "Your session has expired. Please login.",
+          textColor: Color.fromRGBO(255, 255, 255, 1),
+          backgroundColor: Color.fromRGBO(190, 6, 6, 1),
+        ),
+        toastDuration: const Duration(seconds: 5),
+        gravity: ToastGravity.TOP,
+      );
+    });
+  }
+
+  void _errorToast() {
+    fToast!.showToast(
+      child: const CustomToast(
+        text: "An error has occurred. Please retry.",
+        textColor: Color.fromRGBO(255, 255, 255, 1),
+        backgroundColor: Color.fromRGBO(190, 6, 6, 1),
+      ),
+      toastDuration: const Duration(seconds: 5),
+      gravity: ToastGravity.TOP,
+    );
   }
 
   @override
   void initState() {
     super.initState();
     ConnectivityService.initConnectivity(context);
-    onGetApartmentList();
+    fToast = FToast();
+    fToast!.init(context);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (apartmentListFuture == null) {
+      onGetApartmentList();
+    }
+  }
+
+  @override
+  void dispose() {
+    fToast!.removeCustomToast();
+    super.dispose();
   }
 
   @override
@@ -88,7 +140,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               margin:
                   const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-              child: const HomeAppbar(),
+              child: Builder(
+                  builder: (context) => GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).openEndDrawer();
+                      },
+                      child: const HomeAppbar())),
             ),
             CustomLightTextFormField(
               customTextInputAction: TextInputAction.next,
@@ -137,6 +194,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           case ConnectionState.done:
                           default:
                             if (snapshot.hasError) {
+                              if (snapshot.error == "jwt expired" ||
+                                  snapshot.error == "Authentication failed") {
+                                _showLogoutToast();
+                                Future.delayed(
+                                    const Duration(milliseconds: 500), () {
+                                  logout();
+                                });
+                              }
                               return const Center(
                                   child: Text(
                                       "Error when getting apartment list"));
@@ -144,6 +209,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             if (snapshot.hasData) {
                               apartmentProvider.setApartments(snapshot.data!);
+                              if (apartmentProvider
+                                  .favoriteApartments.isEmpty) {
+                                apartmentProvider
+                                    .setFavoriteApartments(snapshot.data!);
+                              }
                               double smallestPrice = double.infinity;
                               double largestPrice = double.negativeInfinity;
 
@@ -153,20 +223,24 @@ class _HomeScreenState extends State<HomeScreen> {
                               } else if (apartmentProvider.apartments.length ==
                                   1) {
                                 smallestPrice = apartmentProvider
-                                    .apartments[0].defaultPrice!
+                                    .apartments[0].defaultDateAndPrice!.price
                                     .toDouble();
                                 largestPrice = 5000;
                               } else {
                                 for (var apartment
                                     in apartmentProvider.apartments) {
-                                  if (apartment.defaultPrice! < smallestPrice) {
-                                    smallestPrice =
-                                        apartment.defaultPrice!.toDouble();
+                                  if (apartment.defaultDateAndPrice!.price <
+                                      smallestPrice) {
+                                    smallestPrice = apartment
+                                        .defaultDateAndPrice!.price
+                                        .toDouble();
                                   }
 
-                                  if (apartment.defaultPrice! > largestPrice) {
-                                    largestPrice =
-                                        apartment.defaultPrice!.toDouble();
+                                  if (apartment.defaultDateAndPrice!.price >
+                                      largestPrice) {
+                                    largestPrice = apartment
+                                        .defaultDateAndPrice!.price
+                                        .toDouble();
                                   }
                                 }
                               }
@@ -189,6 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           apartmentProvider.apartments.length,
                                       itemBuilder: (context, index) {
                                         return ApartmentCard(
+                                            key: UniqueKey(),
                                             apartmentData: apartmentProvider
                                                 .apartments[index],
                                             index: index);
