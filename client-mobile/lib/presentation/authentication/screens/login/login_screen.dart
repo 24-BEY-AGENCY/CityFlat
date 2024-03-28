@@ -1,5 +1,6 @@
 import 'package:cityflat/presentation/authentication/screens/forgot_password/forgot_password_screen.dart';
 import 'package:cityflat/presentation/authentication/screens/signup/signup_screen.dart';
+import 'package:cityflat/presentation/authentication/screens/verify_email/verify_email_screen.dart';
 import 'package:cityflat/presentation/user/user_wrapper/user_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
     final onePercentOfHeight = SizeConfig.heightMultiplier;
 
     final tokenProvider = Provider.of<TokenProvider>(context, listen: false);
@@ -90,15 +91,23 @@ class _LoginScreenState extends State<LoginScreen> {
           await tokenProvider.saveUserData(loggedUser);
           await tokenProvider.getUserData();
 
-          if (mounted) {
-            Navigator.of(context).pushReplacementNamed(
-              UserWrapper.routeName,
-            );
-          }
+          if (!context.mounted) return;
+
+          Navigator.of(context).pushReplacementNamed(
+            UserWrapper.routeName,
+          );
         }
       } catch (error) {
         if (EasyLoading.isShow) {
           await EasyLoading.dismiss();
+        }
+        if (error == "email not verified !") {
+          await tokenProvider.saveUnverfiedUserData(user.email!);
+
+          if (!context.mounted) return;
+          Navigator.of(context).pushReplacementNamed(
+            VerifyEmailScreen.routeName,
+          );
         }
         setState(() {
           isErrorEmail = true;

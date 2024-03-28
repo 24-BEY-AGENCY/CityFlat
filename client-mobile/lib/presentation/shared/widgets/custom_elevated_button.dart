@@ -16,7 +16,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20.0),

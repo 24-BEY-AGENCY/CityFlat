@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
+
 import '../../../../models/user_model.dart';
 import '../../../../providers/token_provider.dart';
 import '../../../../services/auth_service.dart';
@@ -129,7 +130,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
     final onePercentOfHeight = SizeConfig.heightMultiplier;
 
     return AuthLayout(
@@ -184,7 +185,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       customKeyboardType: TextInputType.phone,
                       customKey: _phoneKey,
                       textCapitalization: TextCapitalization.none,
-                      customHintText: "Gsm ...",
+                      customHintText: "Mobile ...",
                       isError: isErrorPhone,
                       prefix: Container(
                         width: 100.0,

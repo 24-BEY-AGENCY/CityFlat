@@ -9,7 +9,7 @@ class SocialLogins extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
     final onePercentOfWidth = SizeConfig.widthMultiplier;
     final onePercentOfHeight = SizeConfig.heightMultiplier;
 
@@ -52,7 +52,7 @@ class SocialLogins extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: onePercentOfWidth * 20),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SocialButton(

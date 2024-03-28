@@ -56,7 +56,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
 
     return Neumorphic(
       margin: const EdgeInsets.symmetric(horizontal: 20.0),

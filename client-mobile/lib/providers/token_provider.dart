@@ -18,13 +18,13 @@ class TokenProvider with ChangeNotifier {
 
   Future<void> getToken() async {
     _token = await _secureStorage.read(key: 'token');
-    print(_token);
     notifyListeners();
   }
 
   Future<void> deleteToken() async {
     await _secureStorage.delete(key: 'token');
     _token = null;
+    _decodedToken = null;
     notifyListeners();
   }
 
@@ -101,6 +101,16 @@ class TokenProvider with ChangeNotifier {
     await _secureStorage.write(key: 'userData', value: userDataString);
   }
 
+  Future<void> saveUnverfiedUserData(String email) async {
+    Map<String, dynamic> userDataMap = {
+      'email': email,
+      'isVerified': false,
+    };
+
+    String userDataString = json.encode(userDataMap);
+    await _secureStorage.write(key: 'userData', value: userDataString);
+  }
+
   Future<void> getUserData() async {
     try {
       String? userDataString = await _secureStorage.read(key: 'userData');
@@ -115,6 +125,14 @@ class TokenProvider with ChangeNotifier {
 
   Future<void> deleteUserData() async {
     await _secureStorage.delete(key: 'userData');
+    _userData = null;
+    notifyListeners();
+  }
+
+  Future<void> clearSecureStorage() async {
+    await _secureStorage.deleteAll();
+    _token = null;
+    _decodedToken = null;
     _userData = null;
     notifyListeners();
   }

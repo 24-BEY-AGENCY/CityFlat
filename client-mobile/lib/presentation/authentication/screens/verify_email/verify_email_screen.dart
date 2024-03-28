@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
+
 import '../../../../providers/token_provider.dart';
 import '../../../../services/auth_service.dart';
 import '../../../../services/connectivity_service.dart';
@@ -108,7 +109,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
       );
 
       await tokenProvider.getUserData();
-      print(tokenProvider.userData!.email!);
       await AuthService()
           .resendVerificationEmail(tokenProvider.userData!.email!);
       if (EasyLoading.isShow) {
@@ -125,7 +125,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
     final onePercentOfWidth = SizeConfig.widthMultiplier;
     final onePercentOfHeight = SizeConfig.heightMultiplier;
 

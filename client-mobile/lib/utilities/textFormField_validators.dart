@@ -69,4 +69,14 @@ class TextFormFieldValidators {
       .regExp(
           RegExp(r'^\d+$', unicode: true), "Rooms should only contain digits.")
       .build();
+
+  static StringValidationCallback reviewValidator =
+      ValidationBuilder().add((value) {
+    if (value != null) {
+      if (value.length > 200) {
+        return 'Maximum length reached.';
+      }
+    }
+    return null;
+  }).build();
 }
