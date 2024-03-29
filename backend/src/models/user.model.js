@@ -54,7 +54,7 @@ const UserSchema = new Schema(
     address: {
       type: String,
       required: false,
-      minlength: 6,
+      minlength: 0,
       maxlength: 50,
     },
     isVerified: { type: Boolean, default: false },
@@ -103,10 +103,11 @@ UserSchema.pre("save", async function (next) {
   try {
     // validate name field
     if (this.isModified("name")) {
-      const nameRegex = /^[a-zA-Z]{1,15}$/;
+      const nameRegex = /^[a-zA-Z ]+$/;
+      // const nameRegex = /^[a-zA-Z]{1,15}$/;
       if (!nameRegex.test(this.name)) {
         throw new Error(
-          "Name should only contain alphabets, no numbers or spaces, and should be between 1 to 15 characters long."
+          "Name should only contain alphabets or spaces, no numbers, and should be between 1 to 25 characters long."
         );
       }
     }
@@ -138,13 +139,13 @@ UserSchema.pre("save", async function (next) {
     }
 
     // validate birthdate field
-    if (this.isModified("BirthDate")) {
+    /*     if (this.isModified("BirthDate")) {
       const currentDate = new Date();
       const inputDate = new Date(this.BirthDate);
       if (inputDate > currentDate) {
         throw new Error("Birthdate cannot be in the future.");
       }
-    }
+    } */
 
     next();
   } catch (err) {

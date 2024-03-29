@@ -125,7 +125,7 @@ export async function getAllReviews(req, res) {
     const apartment = await Appartment.findById(req.params.param)
       .populate({ path: "reviews", populate: { path: "User", select: "img" } })
       .lean();
-    const reviews = apartment.reviews.map((review) => {
+    const reviews = apartment.reviews?.map((review) => {
       return {
         ...review,
         User: review.User._id,
