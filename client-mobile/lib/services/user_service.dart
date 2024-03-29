@@ -1,25 +1,29 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:provider/provider.dart';
 
 import '../config/api_constants.dart';
 import '../models/user_model.dart';
-import '../providers/token_provider.dart';
 import 'dio_service.dart';
 
 class UserService {
   Future<User> updateUser(User user) async {
     try {
+      Object sentImage;
+      if (!user.img!.contains("/images/")) {
+        sentImage = await MultipartFile.fromFile(user.img!);
+      } else {
+        sentImage = user.img!;
+      }
+
       final response = await DioService().dio.put(
             "${ApiConstants.baseUrl}${ApiConstants.userEndpoint}/${user.id}",
-            data: jsonEncode({
+            data: FormData.fromMap({
               'name': user.name,
               'email': user.email,
               'number': user.number,
               'address': user.address,
-              'isVerified': user.isVerified,
+              'img': sentImage,
             }),
           );
       Map<String, dynamic> responseData = response.data;

@@ -2,41 +2,49 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class CustomAlertDialog extends StatelessWidget {
-  const CustomAlertDialog(
-      {super.key, this.title, this.content, this.actions, this.contentPadding});
-
   final Widget? title;
   final Widget? content;
   final List<Widget>? actions;
   final EdgeInsetsGeometry? contentPadding;
+  final bool? isNotGradient;
+
+  const CustomAlertDialog(
+      {super.key,
+      this.title,
+      this.content,
+      this.actions,
+      this.contentPadding,
+      this.isNotGradient});
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
 
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
       child: AlertDialog(
-        content: Container(decoration: BoxDecoration(
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-        child:
-        
-        Container(
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [
-                  Color.fromRGBO(169, 169, 169, 0.27),
-                  Color.fromRGBO(255, 255, 255, 0.2),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-            child: content),),
+        content: Container(
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(255, 255, 255, 1),
+            borderRadius: BorderRadius.circular(50.0),
+          ),
+          child: Container(
+              decoration: isNotGradient != null && isNotGradient!
+                  ? null
+                  : BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color.fromRGBO(169, 169, 169, 0.27),
+                          Color.fromRGBO(255, 255, 255, 0.2),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+              child: content),
+        ),
         backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50.0),

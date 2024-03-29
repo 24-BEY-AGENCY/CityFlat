@@ -3,19 +3,6 @@ import 'package:flutter/material.dart';
 import 'custom_icons.dart';
 
 class CustomLightElevatedButton extends StatelessWidget {
-  const CustomLightElevatedButton(
-      {super.key,
-      required this.buttonText,
-      this.fontSize,
-      this.onPressed,
-      this.condition,
-      this.shadows,
-      this.gradient,
-      this.color,
-      this.textColor,
-      this.border,
-      this.buttonIcon});
-
   final String buttonText;
   final double? fontSize;
   final void Function()? onPressed;
@@ -25,15 +12,33 @@ class CustomLightElevatedButton extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   final BoxBorder? border;
-  final Widget? buttonIcon;
+  final bool? buttonIcon;
+  final EdgeInsetsGeometry? margin;
+  final Widget? icon;
+
+  const CustomLightElevatedButton({
+    super.key,
+    required this.buttonText,
+    this.fontSize,
+    this.onPressed,
+    this.condition,
+    this.shadows,
+    this.gradient,
+    this.color,
+    this.textColor,
+    this.border,
+    this.buttonIcon,
+    this.margin,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20.0),
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 20.0),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50.0),
@@ -71,17 +76,18 @@ class CustomLightElevatedButton extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.w700,
-                        fontSize: 18.0 * curScaleFactor,
+                        fontSize: fontSize ?? 18.0 * curScaleFactor,
                       ),
                     )
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(
-                          CustomIcons.filter,
-                          color: Colors.white,
-                          size: 20.0,
-                        ),
+                        icon ??
+                            const Icon(
+                              CustomIcons.filter,
+                              color: Colors.white,
+                              size: 20.0,
+                            ),
                         const SizedBox(
                           width: 10.0,
                         ),
@@ -90,7 +96,7 @@ class CustomLightElevatedButton extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w700,
-                            fontSize: 18.0 * curScaleFactor,
+                            fontSize: fontSize ?? 18.0 * curScaleFactor,
                           ),
                         ),
                       ],
