@@ -1,6 +1,17 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class CustomLightNeumrphicElevatedButton extends StatelessWidget {
+  final String buttonText;
+  final double? fontSize;
+  final void Function()? onPressed;
+  final bool? condition;
+  final List<BoxShadow>? shadows;
+  final Gradient? gradient;
+  final Color? color;
+  final Color? textColor;
+  final BoxBorder? border;
+  final EdgeInsetsGeometry? margin;
+
   const CustomLightNeumrphicElevatedButton(
       {super.key,
       required this.buttonText,
@@ -11,25 +22,16 @@ class CustomLightNeumrphicElevatedButton extends StatelessWidget {
       this.gradient,
       this.color,
       this.textColor,
-      this.border});
-
-  final String buttonText;
-  final double? fontSize;
-  final void Function()? onPressed;
-  final bool? condition;
-  final List<BoxShadow>? shadows;
-  final Gradient? gradient;
-  final Color? color;
-  final Color? textColor;
-  final BoxBorder? border;
+      this.border,
+      this.margin});
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20.0),
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 20.0),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50.0),
@@ -85,7 +87,7 @@ class CustomLightNeumrphicElevatedButton extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w700,
-                      fontSize: 18.0 * curScaleFactor,
+                      fontSize: fontSize ?? 18.0 * curScaleFactor,
                     ),
                   )),
             ),

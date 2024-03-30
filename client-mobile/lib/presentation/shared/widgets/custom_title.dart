@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomTile extends StatelessWidget {
+class CustomTitle extends StatelessWidget {
   final String title;
   final double fontSize;
   final EdgeInsetsGeometry? margin;
-  const CustomTile(
+  const CustomTitle(
       {super.key, required this.title, required this.fontSize, this.margin});
 
   @override

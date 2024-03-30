@@ -22,7 +22,7 @@ class _CustomAppbarNoImageState extends State<CustomAppbarNoImage> {
         Container(
             padding: const EdgeInsets.only(top: 10.0),
             child: CustomBackButton(onPressed: widget.onPressed!)),
-        CustomTile(
+        CustomTitle(
           title: widget.title!,
           fontSize: 26.0,
         ),

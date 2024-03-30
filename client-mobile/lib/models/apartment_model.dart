@@ -64,27 +64,28 @@ class Apartment {
   DateTime? FromDate;
   DateTime? ToDate;
   bool? isWishlist;
-  Apartment({
-    this.id,
-    this.apartmentName,
-    this.description,
-    this.defaultDateAndPrice,
-    this.specialDates,
-    this.bookedDates,
-    this.location,
-    this.rooms,
-    this.sumOfRatings,
-    this.numOfRatings,
-    this.rating,
-    this.reviews,
-    this.bedroom,
-    this.bathroom,
-    this.services,
-    this.pictures,
-    this.FromDate,
-    this.ToDate,
-    this.isWishlist,
-  });
+  String? orderState;
+  Apartment(
+      {this.id,
+      this.apartmentName,
+      this.description,
+      this.defaultDateAndPrice,
+      this.specialDates,
+      this.bookedDates,
+      this.location,
+      this.rooms,
+      this.sumOfRatings,
+      this.numOfRatings,
+      this.rating,
+      this.reviews,
+      this.bedroom,
+      this.bathroom,
+      this.services,
+      this.pictures,
+      this.FromDate,
+      this.ToDate,
+      this.isWishlist,
+      this.orderState});
 
   Apartment copyWith({
     String? id,
@@ -106,6 +107,7 @@ class Apartment {
     DateTime? FromDate,
     DateTime? ToDate,
     bool? isWishlist,
+    String? orderState,
   }) {
     return Apartment(
       id: id ?? this.id,
@@ -127,6 +129,7 @@ class Apartment {
       FromDate: FromDate ?? this.FromDate,
       ToDate: ToDate ?? this.ToDate,
       isWishlist: isWishlist ?? this.isWishlist,
+      orderState: orderState ?? this.orderState,
     );
   }
 
@@ -150,6 +153,7 @@ class Apartment {
       'FromDate': FromDate?.millisecondsSinceEpoch,
       'ToDate': ToDate?.millisecondsSinceEpoch,
       'isWishlist': isWishlist,
+      'orderState': orderState,
     };
   }
 
@@ -240,6 +244,7 @@ class Apartment {
       services: services,
       pictures: allImages,
       isWishlist: responseData['isWishlist'],
+      orderState: responseData['state'],
     );
   }
 
