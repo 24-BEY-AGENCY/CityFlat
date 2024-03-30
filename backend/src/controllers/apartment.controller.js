@@ -110,6 +110,44 @@ export function httpGetAllAppartsWishlisted(req, res) {
     .catch((err) => res.status(500).json({ error: err.message }));
 }
 
+//get user's ordered appartments with the property isWishlisted
+export function getRentalsWishlisted(req, res) {
+  const userId = req.user.id;
+  const rentals = [];
+
+  orderModel.find({ User: userId }, (err, orders) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    const apartmentIds = orders.map((order) => order.appartment.toString());
+
+    apartmentDb
+      .find({ _id: { $in: apartmentIds } })
+      .then((apparts) => {
+        userDb.findOne({ _id: userId }, (err, user) => {
+          if (err) {
+            return res.status(500).json({ error: err.message });
+          }
+
+          if (!user) {
+            return res.status(404).json({ error: "User not found" });
+          }
+
+          const updatedApparts = apparts.map((apartment) => {
+            const isWishlist = user.wishlist.includes(apartment._id.toString());
+            return { ...apartment.toObject(), isWishlist };
+          });
+
+          rentals.push(...updatedApparts);
+
+          res.status(200).json(appartsIsWishlistedListFormat(rentals));
+        });
+      })
+      .catch((err) => res.status(500).json({ error: err.message }));
+  });
+}
+
 //get one appartment
 export function httpGetOneAppartment(req, res) {
   findOneAppartByFilter(req.params.param)
@@ -147,6 +185,52 @@ export function httpGetOneAppartmentWishlist(req, res) {
         });
       }
     })
+    .catch((err) => res.status(500).json({ error: err.message }));
+}
+
+//get one rental with wishlist property
+export function getOneRentalWishlist(req, res) {
+  const userId = req.user.id;
+  findOneAppartByFilter(req.params.id)
+    .then((foundAppart) => {
+      if (!foundAppart) {
+        res.status(404).json({ message: "Appartment not found!" });
+      } else {
+        orderModel
+          .find({ User: userId, appartment: foundAppart._id })
+          .sort({ createdAt: -1 })
+          .exec((err, orders) => {
+            if (err) {
+              return res.status(500).json({ error: err.message });
+            }
+
+            const isRented = orders.length > 0;
+            let state = null;
+            if (isRented) {
+              state = orders[0].state;
+            }
+
+            userDb.findOne({ _id: userId }, (err, user) => {
+              if (err) {
+                return res.status(500).json({ error: err.message });
+              }
+
+              if (!user) {
+                return res.status(404).json({ error: "User not found" });
+              }
+
+              const isWishlist = user.wishlist.includes(
+                foundAppart._id.toString()
+              );
+              foundAppart.isWishlist = isWishlist;
+              foundAppart.state = state;
+
+              res.status(200).json(appartWishlistFormat(foundAppart));
+            });
+          });
+      }
+    })
+
     .catch((err) => res.status(500).json({ error: err.message }));
 }
 
@@ -402,5 +486,6 @@ export function appartWishlistFormat(appartment) {
     sumOfRatings: appartment.sumOfRatings,
     numOfRatings: appartment.numOfRatings,
     isWishlist: appartment.isWishlist,
+    state: appartment.state,
   };
 }

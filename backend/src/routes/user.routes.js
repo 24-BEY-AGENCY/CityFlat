@@ -56,6 +56,7 @@ import {
   httpGetAllOrders,
   httpGetAllOrdersForUser,
   httpGetAcceptedOrdersForUser,
+  httpGetAcceptedAndPaidOrdersForUser,
   httpGetMyReservations,
   httpGetAllReservations,
   httpGetOneReservation,
@@ -172,6 +173,9 @@ userRouter.route("/orders/GetallUO").get(ensureUser, httpGetAllOrdersForUser);
 userRouter
   .route("/orders/GetAcceptedUO")
   .get(ensureUser, httpGetAcceptedOrdersForUser);
+userRouter
+  .route("/orders/GetAcceptedAndPaidUO")
+  .get(ensureUser, httpGetAcceptedAndPaidOrdersForUser);
 userRouter.route("/order/accept/:id").post(ensureAdmin, httpAdminAcceptOrder);
 
 userRouter

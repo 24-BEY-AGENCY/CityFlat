@@ -9,6 +9,8 @@ import {
   httpGetOneAppartmentWishlist,
   httpUpdateOneAppartment,
   httpDeleteOneAppart,
+  getRentalsWishlisted,
+  getOneRentalWishlist,
 } from "../controllers/apartment.controller.js";
 // https://citynew.onrender.com/
 import {
@@ -41,5 +43,11 @@ appartmentRouter
 appartmentRouter
   .route("/:id/httpGetOneAppartmentWishlist")
   .get(ensureUser, httpGetOneAppartmentWishlist);
+appartmentRouter
+  .route("/getRentalsWishlisted")
+  .get(ensureUser, getRentalsWishlisted);
+appartmentRouter
+  .route("/:id/getOneRentalWishlist")
+  .get(ensureUser, getOneRentalWishlist);
 
 export { appartmentRouter };

@@ -643,6 +643,25 @@ export async function httpGetAcceptedOrdersForUser(req, res) {
     res.status(500).json({ error: err.message });
   }
 }
+export async function httpGetAcceptedAndPaidOrdersForUser(req, res) {
+  try {
+    const userId = req.user.id;
+
+    const orders = await orderDb
+      .find({ User: userId, state: "ACCEPTED", isPaied: true })
+
+      .populate("User");
+
+    if (!orders || orders.length === 0) {
+      return res.status(404).json({ error: "No orders found for this user!" });
+    }
+
+    res.status(200).json(orderListFormat(orders));
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+}
 
 export function httpGetAllOrders(req, res) {
   orderDb
