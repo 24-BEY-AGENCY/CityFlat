@@ -13,12 +13,10 @@ class ApartmentCard extends StatefulWidget {
   final Apartment? apartmentData;
   final int? index;
   final Key? key;
+  final bool? isRental;
 
-  const ApartmentCard({
-    this.apartmentData,
-    this.index,
-    this.key,
-  });
+  const ApartmentCard(
+      {this.apartmentData, this.index, this.key, this.isRental});
 
   @override
   State<ApartmentCard> createState() => _ApartmentCardState();
@@ -46,9 +44,8 @@ class _ApartmentCardState extends State<ApartmentCard> {
   }
 
   visitApartmentScreen(String apartId) {
-    Navigator.of(context).pushNamed(OneApartmentScreen.routeName, arguments: {
-      "apartId": apartId,
-    });
+    Navigator.of(context).pushNamed(OneApartmentScreen.routeName,
+        arguments: {"apartId": apartId, "isRental": widget.isRental});
   }
 
   @override
