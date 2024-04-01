@@ -156,7 +156,6 @@ class _ApartmentCardState extends State<ApartmentCard> {
                                           "assets/icons/svg/favorite_filled.svg",
                                           width: 50,
                                           height: 50,
-                                          // fit: BoxFit.fitWidth,
                                           fit: BoxFit.fitWidth,
                                           color: const Color.fromRGBO(
                                               13, 178, 84, 1),

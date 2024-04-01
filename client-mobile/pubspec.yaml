@@ -152,7 +152,8 @@ flutter:
     - assets/icons/svg/user_border.svg
     - assets/icons/svg/exit.svg
     - assets/icons/svg/eye.svg
-  #   - images/a_dot_ham.jpeg
+    - assets/icons/svg/valid.svg
+    - assets/icons/svg/waiting.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

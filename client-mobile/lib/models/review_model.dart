@@ -4,6 +4,7 @@ class Review {
   String? id;
   String? User;
   String? UserName;
+  String? img;
   num? Rating;
   String? Description;
   String? createdDate;
@@ -11,6 +12,7 @@ class Review {
     this.id,
     this.User,
     this.UserName,
+    this.img,
     this.Rating,
     this.Description,
     this.createdDate,
@@ -20,6 +22,7 @@ class Review {
     String? id,
     String? User,
     String? UserName,
+    String? img,
     num? Rating,
     String? Description,
     String? createdDate,
@@ -28,6 +31,7 @@ class Review {
       id: id ?? this.id,
       User: User ?? this.User,
       UserName: UserName ?? this.UserName,
+      img: img ?? this.img,
       Rating: Rating ?? this.Rating,
       Description: Description ?? this.Description,
       createdDate: createdDate ?? this.createdDate,
@@ -39,6 +43,7 @@ class Review {
       'id': id,
       'User': User,
       'UserName': UserName,
+      'img': img,
       'Rating': Rating,
       'Description': Description,
       'createdDate': createdDate,
@@ -50,6 +55,7 @@ class Review {
       id: map['id'] != null ? map['id'] as String : null,
       User: map['User'] != null ? map['User'] as String : null,
       UserName: map['UserName'] != null ? map['UserName'] as String : null,
+      img: map['img'] != null ? map['img'] as String : null,
       Rating: map['Rating'] != null ? map['Rating'] as num : null,
       Description:
           map['Description'] != null ? map['Description'] as String : null,
@@ -65,6 +71,7 @@ class Review {
       id: responseData['_id'],
       User: responseData['User'],
       UserName: responseData['UserName'],
+      img: responseData['img'],
       Rating: responseData['Rating'],
       Description: responseData['Description'],
       createdDate: responseData['createdDate'],
@@ -73,7 +80,7 @@ class Review {
 
   @override
   String toString() {
-    return 'Review(id: $id, User: $User, UserName: $UserName, Rating: $Rating, Description: $Description, createdDate: $createdDate)';
+    return 'Review(id: $id, User: $User, UserName: $UserName, img: $img,Rating: $Rating, Description: $Description, createdDate: $createdDate)';
   }
 
   @override
@@ -83,6 +90,7 @@ class Review {
     return other.id == id &&
         other.User == User &&
         other.UserName == UserName &&
+        other.img == img &&
         other.Rating == Rating &&
         other.Description == Description &&
         other.createdDate == createdDate;
@@ -93,6 +101,7 @@ class Review {
     return id.hashCode ^
         User.hashCode ^
         UserName.hashCode ^
+        img.hashCode ^
         Rating.hashCode ^
         Description.hashCode ^
         createdDate.hashCode;
