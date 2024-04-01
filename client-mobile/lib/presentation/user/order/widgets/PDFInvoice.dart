@@ -1,19 +1,45 @@
 import 'dart:io';
 
+import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:path_provider/path_provider.dart';
 
 import '../../../shared/widgets/custom_icons2.dart';
 import '../../../shared/widgets/custom_light_elevated_button.dart';
+import '../../../shared/widgets/custom_toast.dart';
 
-class PDFInvoice extends StatelessWidget {
+class PDFInvoice extends StatefulWidget {
   final dynamic order;
 
   const PDFInvoice({Key? key, required this.order}) : super(key: key);
+
+  @override
+  State<PDFInvoice> createState() => _PDFInvoiceState();
+}
+
+class _PDFInvoiceState extends State<PDFInvoice> {
+  FToast? fToast;
+
+  Future<void> _showSuccessToast() {
+    fToast = FToast();
+    fToast!.init(context);
+    return Future.delayed(const Duration(milliseconds: 500), () {
+      fToast!.showToast(
+        child: const CustomToast(
+          text: "Your invoice has been downloaded successfully.",
+          textColor: Color.fromRGBO(255, 255, 255, 1),
+          backgroundColor: Color.fromRGBO(6, 190, 86, 1),
+        ),
+        toastDuration: const Duration(seconds: 5),
+        gravity: ToastGravity.TOP,
+      );
+    });
+  }
 
   pw.Widget billInfoBuilder(String boldText, String normalText, pw.Font? font,
       List<pw.Font> fontFallback) {
@@ -220,6 +246,14 @@ class PDFInvoice extends StatelessWidget {
   }
 
   @override
+  void dispose() {
+    if (fToast != null) {
+      fToast!.removeCustomToast();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final curScaleFactor = mediaQuery.textScaler.scale(1);
@@ -257,20 +291,31 @@ class PDFInvoice extends StatelessWidget {
       textColor: const Color.fromRGBO(255, 255, 255, 1),
       onPressed: () async {
         try {
-          final pdf = await generatePDF(order);
+          final pdf = await generatePDF(widget.order);
 
-          final Directory? downloadsDirectory =
-              await getExternalStorageDirectory();
+          var downloadsPath =
+              await ExternalPath.getExternalStoragePublicDirectory(
+                  ExternalPath.DIRECTORY_DOWNLOADS);
 
-          final String downloadsPath = downloadsDirectory!.path;
           String filePath =
-              '$downloadsPath/invoice_${DateFormat('dd-MM-yyyy').format(order!.updatedAt!)}.pdf';
-
+              '$downloadsPath/invoice_${DateFormat('dd-MM-yyyy').format(widget.order!.updatedAt!)}.pdf';
           File file = File(filePath);
           await file.writeAsBytes(await pdf.save());
           print('File path: $filePath');
+
+          if (EasyLoading.isShow) {
+            await EasyLoading.dismiss();
+          }
+
+          await _showSuccessToast();
+          if (EasyLoading.isShow) {
+            await EasyLoading.dismiss();
+          }
         } catch (e) {
           print('Exception while writing file: $e');
+          if (EasyLoading.isShow) {
+            await EasyLoading.dismiss();
+          }
         }
       },
       condition: true,
