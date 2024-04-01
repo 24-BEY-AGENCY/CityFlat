@@ -83,10 +83,8 @@ class User {
       'birthdate': birthdate?.millisecondsSinceEpoch,
       'role': role,
       'img': img,
-      // 'reservations': reservations!.map((x) => x?.toMap()).toList(),
       'googleID': googleID,
       'stripeCustomerID': stripeCustomerID,
-      // 'wishlist': wishlist!.map((x) => x?.toMap()).toList(),
       'token': token,
     };
   }

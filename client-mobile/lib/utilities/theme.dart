@@ -6,13 +6,13 @@ class AppTheme {
 
   static const Color appBackgroundColor = Color.fromRGBO(255, 255, 255, 1);
   static const Color canvasColor = Color.fromRGBO(255, 255, 255, 1);
-  static const Color primaryColor = const Color.fromRGBO(13, 178, 84, 1);
+  static const Color primaryColor = Color.fromRGBO(13, 178, 84, 1);
+
   static const Color secondary = Color.fromRGBO(255, 255, 255, 1);
 
   static final ThemeData lightTheme = ThemeData(
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
-        // statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.dark,
       ),
@@ -49,7 +49,7 @@ class AppTheme {
   );
 
   static const TextTheme lightTextTheme = TextTheme(
-    headline1: _lightHeadine,
+    displayLarge: _lightHeadine,
   );
 
   static const TextStyle _lightHeadine = TextStyle(

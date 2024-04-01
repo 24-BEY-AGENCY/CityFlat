@@ -24,7 +24,7 @@ class _CustomRangeSliderState extends State<CustomRangeSlider> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final curScaleFactor = mediaQuery.textScaleFactor;
+    final curScaleFactor = mediaQuery.textScaler.scale(1);
 
     buildLabel(double value) {
       return Text(

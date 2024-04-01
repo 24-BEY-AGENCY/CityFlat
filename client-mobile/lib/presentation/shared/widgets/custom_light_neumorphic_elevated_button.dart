@@ -72,7 +72,6 @@ class CustomLightNeumrphicElevatedButton extends StatelessWidget {
                 color: color ?? null,
                 gradient: gradient ?? null,
                 borderRadius: BorderRadius.circular(30.0),
-                // border: border ?? null,
               ),
               child: Container(
                   decoration: BoxDecoration(
